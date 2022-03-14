@@ -61,6 +61,7 @@ Wir berechnen die maximale Abweichung mit diesen Daten.
   \\
   \Delta T     & = max(T_{max} - \overline{T}, \overline{T} - T_{min})                         \\
                & = max(8.27s - 8.2005s, 8.2005s - 8.14)                                        \\
+               & = max(0.0695s, 0.0605)                                                        \\
                & = 0.0695s                                                                     \\
                & = 0.07s
 \end{align*}
@@ -74,44 +75,32 @@ Wir berechnen die maximale Abweichung mit diesen Daten.
 
 \section{Aufgaben}
 \subsection{Vor und Nachteile schöner Werte für $l$}
-Schöne längen für $l$ sind einfacher zu messen, was ein deutlicher vorteil ist.
+Schöne längen für $l$ sind einfacher zu messen, was ein deutlicher Vorteil ist.
 Das Problem ist, das wenn $l$ einen schönen Wert hat, dann wird $T$ relativ sicher keinen schönen Wert haben.
 
 \subsection{Proportionalität von $T$ zu $l$}
 
-\pgfkeys{
-  /datadiagram/.is family, /datadiagram,
-  x label/.store in=\xlabel,
-  x data/.store in=\xdata,
-  x error/.store in=\xerror,
-  y label/.store in=\ylabel,
-  y data/.store in=\ydata,
-  y error/.store in=\yerror,
-}
-
-\pgfkeys{/datadiagram, x data=l,
-  x label=Pendellänge $l$ in cm,
-  x error=0.1,
-  y label=Periodenlänge $T$ in s,
-  y data=T,
-  y error=0.0
-}
 \begin{center}
   \begin{tikzpicture}
     \begin{axis}[
+        xmin=-0.2,
+        xmax=1.2,
+        ymin=0,
+        ymax=2,
         axis lines = left,
-        enlargelimits=0.2,
-        ylabel={\ylabel},
-        xlabel={\xlabel},
+        % enlargelimits=0.2,
+        ylabel={Periodenlänge $T$ in s},
+        xlabel={Pendellänge $l$ in cm},
         cycle list name=black white
       ]
-      \addplot+[color=red, domain=0:125, samples=100, mark=none]{sqrt(x)};
+      \addplot+[color=red, samples=100, mark=none]{sqrt(x)};
       \addlegendentry{sqrt(x)}
-      \addplot+[only marks] table[x=\xdata, y=\ydata, col sep=comma] {laenge.csv};
-      \addlegendentry{unsere messungen}
+      \addplot+[only marks] plot [error bars/.cd, y dir=both, x dir=both, x fixed=0.1, y fixed=0.07] table[x expr=\thisrow{l} / 100, y expr=\thisrow{T} / 5, col sep=comma] {laenge.csv};
+      \addlegendentry{unsere messungen} 
     \end{axis}
   \end{tikzpicture}
 \end{center}
+
 
 Diese Grafik illustriert gut das $T$ proportional zur Wurzel von $l$ ist. 
 
@@ -143,6 +132,6 @@ Auch hier sind die Differenzen kleiner als der Messfehler, daher können wir auc
 \section{Referenzen}
 \printbibliography[heading=none]
 \section{Anhang}
-Veruschsanleitung und Originalprotokoll vom \labdate
+Versuchsanleitung und Originalprotokoll vom \labdate
 
 \end{document}
