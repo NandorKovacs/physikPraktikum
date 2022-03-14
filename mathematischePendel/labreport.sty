@@ -1,0 +1,108 @@
+\NeedsTeXFormat{LaTeX2e}
+\ProvidesPackage{labreport}[2022/03/04 Lab Report]
+
+% Imports
+\usepackage{fancyhdr}
+\usepackage[a4paper, left=2cm, right=2cm, top=2.5cm, bottom=2.5cm]{geometry}
+\usepackage[ngerman]{babel}
+\usepackage{float}
+\usepackage{csquotes}
+\usepackage{graphicx}
+\usepackage[backend=biber,style=numeric,sorting=ynt]{biblatex}
+\addbibresource{references.bib}
+\usepackage{csvsimple}
+\usepackage{amsmath}
+\usepackage{pgfplots}
+\usepackage{pgfkeys}
+\RequirePackage{pgfopts}
+
+% Metadata options
+\pgfkeys{
+    /labreport/.is family, /labreport,
+    authors/.store in = \authors,
+    title/.store in = \title,
+    subtitle/.store in = \subtitle,
+    date/.store in = \date,
+    labdate/.store in = \labdate
+}
+\newcommand{\setlabreportopts}[2][]{
+    \pgfkeys{/labreport, #1}
+}
+
+% User settable constants
+% \newcommand{\setauthors}[1]{\def\authors{#1}}
+% \newcommand{\settitle}[1]{\def\title{#1}}
+% \newcommand{\setsubtitle}[1]{\def\subtitle{#1}}
+% \newcommand{\setdate}[1]{\def\date{#1}}
+% \newcommand{\setlabdate}[1]{\def\labdate{#1}}
+
+% Constants
+\def\MNG{Mathematisches Naturwissenschaftliches Gymnasium Rämibühl}
+
+% Header
+\pagestyle{fancy}
+\rhead{\authors}
+\lhead{Physik Praktikum - \title}
+\setlength{\headheight}{14.5pt}
+\setlength{\headsep}{30pt}
+
+% Indent
+\setlength{\parindent}{0pt}
+
+% Titlepage
+\newcommand{\maketitlepage}{
+    \begin{titlepage}
+       \begin{center}
+            \vspace*{5cm}
+            \huge\textbf{\title}\\
+            \vspace{0.5cm}
+            \large\subtitle\\
+            \date\\
+            \vspace{2cm}
+            \textbf{\authors}
+            \vfill
+            Bericht zum Physikpraktikum vom \labdate\\
+            \MNG
+        \end{center}
+    \end{titlepage}
+}
+
+% Table of data from csv
+% TODO: currently only works with two data columns, use #1 for column count
+\newcommand{\datatable}[4]{
+    \begin{table}[H]\centering
+        \csvreader[
+          tabular=c|c,
+          table head=#3\\\hline,
+        ]{#4}{}{\csvcoli & \csvcolii}
+        \caption{#2}
+    \end{table}
+}
+
+% Diagram of data from csv
+\pgfkeys{
+    /datadiagram/.is family, /datadiagram,
+    x label/.store in=\xlabel,
+    x data/.store in=\xdata,
+    x error/.store in=\xerror,
+    y label/.store in=\ylabel,
+    y data/.store in=\ydata,
+    y error/.store in=\yerror,
+}
+\newcommand{\datadiagram}[2][]{
+    \pgfkeys{/datadiagram, #1}
+    
+    \begin{center}
+        \begin{tikzpicture}
+            \begin{axis}[
+            axis lines = left,
+            enlargelimits=0.2,
+            ylabel={\ylabel},
+            xlabel={\xlabel},
+            cycle list name=black white
+            ]
+            \addplot+[only marks, error bars/.cd, y dir=both, y fixed=\yerror, x dir=both, x fixed=\xerror] table[x=\xdata, y=\ydata, col sep=comma] {#2};
+            \end{axis}
+        \end{tikzpicture}
+    \end{center}
+}

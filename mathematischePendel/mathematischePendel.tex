@@ -1,0 +1,110 @@
+\documentclass[12pt, a4paper, twoside]{article}
+\usepackage{labreport}
+\usepackage{pdfpages}
+
+\setlabreportopts[authors={Nandor Kovacs \& Céline Schuster},
+    title={Mathematisches Pendel},
+    subtitle={Untersuchung der Eigenschaften eines Mathematischen Pendels},
+    date={\today},
+    labdate={4. März 2022}
+]
+
+\begin{document}
+\maketitlepage
+
+\includepdf[pages={1}]{aufgabenstellung.pdf}
+
+\section{Einleitung}
+Wir alle kennen Pendeluhren.
+Pendeluhren benutzen statt Quartz stückchen, oder Signale von einer Radiouhr eine Pendel um die Zeit zu verfolgen.
+Das muss heissen, das die Periodenlängen von Pendeln berechenbar sind.
+Falls die Periode von dem Ausschlagwinkel abhängt, würde das aber recht kompliziert sein zum berechnen, also vermuten wir dass das nicht der Fall ist.
+
+\section{Theorie}
+Eine Pendel hat folgende Parameter:
+\begin{list}{-}{}
+  \item \emph{l} = die Länge der Pendel
+  \item \emph{g} = das Gewicht des Pendelgewichts. Dies ist gleich zur länge der Schnur plus die halbe Dicke des Gewichts.
+  \item \emph{$\alpha$} = die auslenkung beim starten der Pendel in winkelgrad
+\end{list}
+
+Die Formel für die länge einer Periode in Sekunden lautet
+$$T=2\pi\cdot\sqrt{\frac{l}{g}}$$
+\cite{FoTa}
+
+\section{Experiment}
+\begin{figure} [ht]
+  \centering
+  \includegraphics[width=0.5\textwidth]{Experimentaufbau.png}
+  \caption{Skizze Experimentaufbau}
+  \label{fig:experimentaufbau}
+\end{figure}
+
+Unser Experiment ist einfach aufgebaut. 
+Es wird ein Gewicht an einem Faden Aufgehängt. 
+Sie wird ausgelenkt, losgelassen, und die Zeit der Perioden werden gemessen wenn das Gewicht die Mitte kreuzt. 
+Wir lassen ausserdem 5mal das Gewicht pendeln bevor wir es messen, damit ungenauigkeiten ausgependelt werden.
+
+Die länge $l$ messen wir mit einem Massband auf 0.5cm genau und $\alpha$ messen wir mit einer Winklerscheibe auf 2\textdegree genau. Die Zeit messen wir mit einer Stoppuhr.
+
+Um den Messfehler der Zeitmessung zu erfassen machen wir 20 Messungen und finden die maximale Abweichung zum Mittel der Messungen.
+\datatable{2}{Messungen zu Aufgabe a}{Messung Nr. & Schwingungsdauer $T$ in s}{Messung_a.csv}
+
+\begin{align*}
+  \overline{T} & = \frac{1}{n} \sum_{i=1}^{n} T_{i}=\frac{1}{n}\left(T_{1}+\cdots+T_{n}\right) \\
+               & =\frac{32.5s}{20}                                                             \\
+               & =1.625s                                                                       \\
+  \\
+  \Delta T     & = T_{max} - \overline{T}                                                      \\
+               & = 1.8s - 1.625s                                                               \\
+               & = 0.175s                                                                      \\
+               & = 0.2s
+\end{align*}
+
+\vfill\pagebreak
+
+\section{Aufgaben}
+\subsection{Abhängigkeit Schwingungsdauer und Pendelmasse}
+\datatable{2}{Messungen zu Aufgabe b}{Pendelmasse $m$ in g \textdegree & Schwingungsdauer $T$ in s}{Messung_b.csv}
+
+\datadiagram[x label=Pendelmasse $m$ i g,
+  x data=m,
+  x error=0.1,
+  y label=Schwingungsdauer $T$ in s,
+  y data=T,
+  y error=0.2
+]{Messung_b.csv}
+
+Da die Differenzen zwischen den Schwingungsdauern bei den verschiedenen Pendelmassen kleiner als die Messfehler sind können wir annehmen, dass die Pendelmasse keinen Einfluss auf die Schwingungsdauer hat.
+
+\subsection{Abhängigkeit Schwingsungsdauer und Amplitude}
+\datatable{2}{Messungen zu Aufgabe c}{Amplitude $\alpha$ in \textdegree & Schwingungsdauer $T$ in s}{Messung_c.csv}
+
+\datadiagram[x label=Amplitude $\alpha$ in \textdegree,
+  x data=alpha,
+  x error=2,
+  y label=Schwingungsdauer $T$ in s,
+  y data=T,
+  y error=0.2
+]{Messung_c.csv}
+
+Auch hier sind die Differenzen kleiner als der Messfehler, daher können wir auch annehmen, dass die Schwingungsdauer von der Maplitude unabhängig ist.
+
+\subsection{Schwingungsdauer als Funktion der Pendellänge}
+\datatable{2}{Messungen zu Aufgabe d}{Pendellänge $l$ in cm & Schwingungsdauer $T$ in s}{Messung_d.csv}
+\datadiagram[x label=Pendellänge $l$ in cm,
+  x data=l,
+  x error=0.1,
+  y label=Schwingungsdauer $T$ in s,
+  y data=T,
+  y error=0.2
+]{Messung_d.csv}
+
+\section{Fazit}
+\section{Reflektion}
+\section{Referenzen}
+\printbibliography[heading=none]
+\section{Anhang}
+Veruschsanleitung und Originalprotokoll vom \labdate
+
+\end{document}
