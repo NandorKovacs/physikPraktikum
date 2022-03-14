@@ -69,13 +69,14 @@
 
 % Table of data from csv
 % TODO: currently only works with two data columns, use #1 for column count
-\newcommand{\datatable}[4]{
+\newcommand{\datatable}[5]{
     \begin{table}[H]\centering
         \csvreader[
           tabular=c|c,
           table head=#3\\\hline,
         ]{#4}{}{\csvcoli & \csvcolii}
         \caption{#2}
+        \label{table:#5}
     \end{table}
 }
 
@@ -91,7 +92,7 @@
 }
 \newcommand{\datadiagram}[2][]{
     \pgfkeys{/datadiagram, #1}
-    
+
     \begin{center}
         \begin{tikzpicture}
             \begin{axis}[

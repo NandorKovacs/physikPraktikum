@@ -29,7 +29,7 @@ Eine Pendel hat folgende Parameter:
 \end{list}
 
 Die Formel für die länge einer Periode in Sekunden lautet
-$$T=2\pi\cdot\sqrt{\frac{l}{g}}$$
+$$T=2\pi \sqrt{\frac{l}{g}}$$
 \cite{FoTa}
 
 \section{Experiment}
@@ -46,12 +46,12 @@ Sie wird ausgelenkt, losgelassen, und die Zeit der Perioden werden gemessen wenn
 Wir lassen ausserdem 5mal das Gewicht pendeln bevor wir es messen, damit ungenauigkeiten ausgependelt werden.
 
 Die länge $l$ messen wir mit einem Massband auf 0.5cm genau und $\alpha$ messen wir mit einer Winklerscheibe auf 2\textdegree genau.
-Die Zeit messen wir mit einer Stoppuhr.
+Die Zeit messen wir mit einer Stoppuhr. Damit wir genauere Messungen haben, messen wir immer 5 Perioden.
 
 Um die genauigkeit von den Zeitmessungen zu bestimmen, messen wir 20mal mit dem gleichen $\alpha$, $m$, und $l$.
 Wir berechnen die maximale Abweichung mit diesen Daten.
 
-\datatable{2}{Messungen zur Vorbereitung}{Nr. & Periodenlänge $T$ in s}{Messung_a.csv}
+\datatable{2}{Messungen zur Vorbereitung}{Nr. & Periodenlänge $T$*5 in s}{precision.csv}{precision}
 
 
 \begin{align*}
@@ -69,9 +69,9 @@ Wir berechnen die maximale Abweichung mit diesen Daten.
 \vfill\pagebreak
 
 \section{Messungen}
-\datatable{2}{$m$ ist konstant, $\alpha$ ist konstant und klein, $l$ ist variabel}{Pendellänge $l$ in cm & Periodenlänge $T$ in s}{laenge.csv}
-\datatable{2}{$l$ ist konstant, $\alpha$ ist konstant und klein, $m$ ist variabel}{Gewichtsmasse $m$ in g & Periodenlänge $T$ in s}{masse.csv}
-\datatable{2}{$l$ ist konstant, $m$ ist konstant, $\alpha$ ist variabel}{Amplitude $\alpha$ in Winkelgrad & Periodenlänge $T$ in s}{winkelgrad.csv}
+\datatable{2}{$m$ ist konstant, $\alpha$ ist konstant und klein, $l$ ist variabel}{Pendellänge $l$ in cm & Periodenlänge $T$*5 in s}{laenge.csv}{laenge}
+\datatable{2}{$l$ ist konstant, $\alpha$ ist konstant und klein, $m$ ist variabel}{Gewichtsmasse $m$ in g & Periodenlänge $T$*5 in s}{masse.csv}{masse}
+\datatable{2}{$l$ ist konstant, $m$ ist konstant, $\alpha$ ist variabel}{Amplitude $\alpha$ in Winkelgrad & Periodenlänge $T$*5 in s}{winkelgrad.csv}{winkel}
 
 \section{Aufgaben}
 \subsection{Vor und Nachteile schöner Werte für $l$}
@@ -81,51 +81,87 @@ Das Problem ist, das wenn $l$ einen schönen Wert hat, dann wird $T$ relativ sic
 \subsection{Proportionalität von $T$ zu $l$}
 
 \begin{center}
+  \pgfplotsset{every axis legend/.append style={
+        at={(1,0)},
+        anchor=south east}}
   \begin{tikzpicture}
     \begin{axis}[
         xmin=-0.2,
-        xmax=1.2,
+        xmax=2,
         ymin=0,
-        ymax=2,
+        ymax=2.2,
         axis lines = left,
         % enlargelimits=0.2,
         ylabel={Periodenlänge $T$ in s},
-        xlabel={Pendellänge $l$ in cm},
+        xlabel={Pendellänge $l$ in m},
         cycle list name=black white
       ]
-      \addplot+[color=red, samples=100, mark=none]{sqrt(x)};
+      \addplot+[color=red, samples=1000, mark=none]{sqrt(x)};
       \addlegendentry{sqrt(x)}
       \addplot+[only marks] plot [error bars/.cd, y dir=both, x dir=both, x fixed=0.1, y fixed=0.07] table[x expr=\thisrow{l} / 100, y expr=\thisrow{T} / 5, col sep=comma] {laenge.csv};
-      \addlegendentry{unsere messungen} 
+      \addlegendentry{unsere messungen}
     \end{axis}
   \end{tikzpicture}
 \end{center}
 
 
-Diese Grafik illustriert gut das $T$ proportional zur Wurzel von $l$ ist. 
+Diese Grafik illustriert gut das $T$ proportional zur Wurzel von $l$ ist.
 
-\subsection{Abhängigkeit Schwingsungsdauer und Amplitude}
-\datatable{2}{Messungen zu Aufgabe c}{Amplitude $\alpha$ in \textdegree & Schwingungsdauer $T$ in s}{Messung_c.csv}
+\subsection{Regressionsfunktion \& Fallbeschleunigung ausrechnen}
+\subsubsection{Regressionsparameter berechnen}
+Der Regressionsfaktor $R_l$ ist
 
-\datadiagram[x label=Amplitude $\alpha$ in \textdegree,
-  x data=alpha,
-  x error=2,
-  y label=Schwingungsdauer $T$ in s,
-  y data=T,
-  y error=0.2
-]{Messung_c.csv}
+\begin{align*}
+  R_l & = \frac{sqrt(l)}{T_l} \\
+\end{align*}
 
-Auch hier sind die Differenzen kleiner als der Messfehler, daher können wir auch annehmen, dass die Schwingungsdauer von der Maplitude unabhängig ist.
+Um eine Annäherung an der allgemeinen Regressionsfaktor zu bekommen,
+nehmen wir den Druchschnitt aller $R_l$ die wir ausrechnen können aus unseren Messresultaten aus Tabelle~\ref{table:laenge}.
 
-\subsection{Schwingungsdauer als Funktion der Pendellänge}
-\datatable{2}{Messungen zu Aufgabe d}{Pendellänge $l$ in cm & Schwingungsdauer $T$ in s}{Messung_d.csv}
-\datadiagram[x label=Pendellänge $l$ in cm,
-  x data=l,
-  x error=0.1,
-  y label=Schwingungsdauer $T$ in s,
-  y data=T,
-  y error=0.2
-]{Messung_d.csv}
+\begin{align*}
+  \overline{R} & = \frac{1}{n}\sum_{i=0}^{n} \frac{sqrt(l_i)}{T_i} \\
+  \\
+               & = \frac{9.923360844s}{20\sqrt{m}}                 \\
+  \\
+               & = 0.496168042\frac{s}{sqrt(m)}
+\end{align*}
+
+\begin{center}
+  \pgfplotsset{every axis legend/.append style={
+        at={(1,0)},
+        anchor=south east}}
+  \begin{tikzpicture}
+    \begin{axis}[
+        xmin=-0.2,
+        xmax=2,
+        ymin=0,
+        ymax=2.2,
+        axis lines = left,
+        % enlargelimits=0.2,
+        ylabel={Periodenlänge $T$ in s},
+        xlabel={Pendellänge $l$ in m},
+        cycle list name=black white
+      ]
+      \addplot+[color=red, samples=1000, mark=none]{sqrt(x)};
+      \addlegendentry{sqrt(x)}
+      \addplot+[only marks] plot [error bars/.cd, y dir=both, x dir=both, x fixed=0.1, y fixed=0.07] table[x expr=\thisrow{l} / 100, y expr=\thisrow{T} / 5 * 0.496168042, col sep=comma] {laenge.csv};
+      \addlegendentry{unsere messungen * $\overline{R}$}
+    \end{axis}
+  \end{tikzpicture}
+\end{center}
+
+Der Literarturwert für $R$ kann man aus dem Literarturwert für $T$ ausrechnen
+
+\begin{align*}
+  T                               & = 2\pi \sqrt{\frac{l}{g}}    \\
+  \frac{1}{2\pi \sqrt{g}}T        & = \sqrt{l}                   \\
+  \\
+  R                               & = \frac{1}{2\pi \sqrt{g}}    \\
+  \\
+  \frac{1}{2\pi \sqrt{9.81m/s^2}} & = 0.0508143\frac{s}{sqrt(m)} \\
+\end{align*}
+
+\subsubsection{Fallbeschleunigung mit Fehlerrechnung ausrechnen}
 
 \section{Fazit}
 \section{Reflektion}
