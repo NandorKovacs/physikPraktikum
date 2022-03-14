@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.20 (TeX Live 2019/Debian) (preloaded format=pdflatex 2022.3.11)  14 MAR 2022 08:27
+This is pdfTeX, Version 3.14159265-2.6-1.40.20 (TeX Live 2019/Debian) (preloaded format=pdflatex 2022.3.11)  14 MAR 2022 11:19
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -845,19 +845,16 @@ File: Experimentaufbau.png Graphic file (type png)
 <use Experimentaufbau.png>
 Package pdftex.def Info: Experimentaufbau.png  used on input line 38.
 (pdftex.def)             Requested size: 241.84843pt x 193.9831pt.
-[3 </home/nandor/physikPraktikum/mathematischePendel/Experimentaufbau.png>] [4]
-PGFPlots: reading {Messung_b.csv}
+[3 </home/nandor/physikPraktikum/mathematischePendel/Experimentaufbau.png>] [4] [5]
+PGFPlots: reading {laenge.csv}
 PGFPlots: reading {Messung_c.csv}
-
-Underfull \vbox (badness 10000) has occurred while \output is active []
-
- [5]
+ [6]
 PGFPlots: reading {Messung_d.csv}
 
 
-LaTeX Warning: Empty bibliography on input line 106.
+LaTeX Warning: Empty bibliography on input line 144.
 
-[6] [7] (/home/nandor/physikPraktikum/mathematischePendel/mathematischePendel.aux)
+[7] (/home/nandor/physikPraktikum/mathematischePendel/mathematischePendel.aux)
 
 LaTeX Warning: There were undefined references.
 
@@ -871,15 +868,15 @@ Package logreq Info: Writing requests to 'mathematischePendel.run.xml'.
 
  ) 
 Here is how much of TeX's memory you used:
- 32963 strings out of 481239
- 785299 string characters out of 5920377
- 1533893 words of memory out of 5000000
- 47714 multiletter control sequences out of 15000+600000
- 538556 words of font info for 45 fonts, out of 8000000 for 9000
+ 33021 strings out of 481239
+ 786489 string characters out of 5920377
+ 1526893 words of memory out of 5000000
+ 47770 multiletter control sequences out of 15000+600000
+ 539622 words of font info for 49 fonts, out of 8000000 for 9000
  1143 hyphenation exceptions out of 8191
- 74i,18n,105p,900b,2512s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 74i,18n,105p,900b,2492s stack positions out of 5000i,500n,10000p,200000b,80000s
 {/usr/share/texmf/fonts/enc/dvips/cm-super/cm-super-ts1.enc}</usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi12.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi8.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmti12.pfb></usr/share/texmf/fonts/type1/public/cm-super/sfrm1200.pfb>
-Output written on /home/nandor/physikPraktikum/mathematischePendel/mathematischePendel.pdf (7 pages, 1262694 bytes).
+Output written on /home/nandor/physikPraktikum/mathematischePendel/mathematischePendel.pdf (7 pages, 1266661 bytes).
 PDF statistics:
  76 PDF objects out of 1000 (max. 8388607)
  51 compressed objects within 1 object stream

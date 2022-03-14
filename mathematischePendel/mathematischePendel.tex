@@ -40,42 +40,80 @@ $$T=2\pi\cdot\sqrt{\frac{l}{g}}$$
   \label{fig:experimentaufbau}
 \end{figure}
 
-Unser Experiment ist einfach aufgebaut. 
-Es wird ein Gewicht an einem Faden Aufgehängt. 
-Sie wird ausgelenkt, losgelassen, und die Zeit der Perioden werden gemessen wenn das Gewicht die Mitte kreuzt. 
+Unser Experiment ist einfach aufgebaut.
+Es wird ein Gewicht an einem Faden Aufgehängt.
+Sie wird ausgelenkt, losgelassen, und die Zeit der Perioden werden gemessen wenn das Gewicht die Mitte kreuzt.
 Wir lassen ausserdem 5mal das Gewicht pendeln bevor wir es messen, damit ungenauigkeiten ausgependelt werden.
 
-Die länge $l$ messen wir mit einem Massband auf 0.5cm genau und $\alpha$ messen wir mit einer Winklerscheibe auf 2\textdegree genau. Die Zeit messen wir mit einer Stoppuhr.
+Die länge $l$ messen wir mit einem Massband auf 0.5cm genau und $\alpha$ messen wir mit einer Winklerscheibe auf 2\textdegree genau.
+Die Zeit messen wir mit einer Stoppuhr.
 
-Um den Messfehler der Zeitmessung zu erfassen machen wir 20 Messungen und finden die maximale Abweichung zum Mittel der Messungen.
-\datatable{2}{Messungen zu Aufgabe a}{Messung Nr. & Schwingungsdauer $T$ in s}{Messung_a.csv}
+Um die genauigkeit von den Zeitmessungen zu bestimmen, messen wir 20mal mit dem gleichen $\alpha$, $m$, und $l$.
+Wir berechnen die maximale Abweichung mit diesen Daten.
+
+\datatable{2}{Messungen zur Vorbereitung}{Nr. & Periodenlänge $T$ in s}{Messung_a.csv}
+
 
 \begin{align*}
   \overline{T} & = \frac{1}{n} \sum_{i=1}^{n} T_{i}=\frac{1}{n}\left(T_{1}+\cdots+T_{n}\right) \\
-               & =\frac{32.5s}{20}                                                             \\
-               & =1.625s                                                                       \\
+               & =\frac{164.01s}{20}                                                           \\
+               & =8.2005s                                                                      \\
   \\
-  \Delta T     & = T_{max} - \overline{T}                                                      \\
-               & = 1.8s - 1.625s                                                               \\
-               & = 0.175s                                                                      \\
-               & = 0.2s
+  \Delta T     & = max(T_{max} - \overline{T}, \overline{T} - T_{min})                         \\
+               & = max(8.27s - 8.2005s, 8.2005s - 8.14)                                        \\
+               & = 0.0695s                                                                     \\
+               & = 0.07s
 \end{align*}
 
 \vfill\pagebreak
 
+\section{Messungen}
+\datatable{2}{$m$ ist konstant, $\alpha$ ist konstant und klein, $l$ ist variabel}{Pendellänge $l$ in cm & Periodenlänge $T$ in s}{laenge.csv}
+\datatable{2}{$l$ ist konstant, $\alpha$ ist konstant und klein, $m$ ist variabel}{Gewichtsmasse $m$ in g & Periodenlänge $T$ in s}{masse.csv}
+\datatable{2}{$l$ ist konstant, $m$ ist konstant, $\alpha$ ist variabel}{Amplitude $\alpha$ in Winkelgrad & Periodenlänge $T$ in s}{winkelgrad.csv}
+
 \section{Aufgaben}
-\subsection{Abhängigkeit Schwingungsdauer und Pendelmasse}
-\datatable{2}{Messungen zu Aufgabe b}{Pendelmasse $m$ in g \textdegree & Schwingungsdauer $T$ in s}{Messung_b.csv}
+\subsection{Vor und Nachteile schöner Werte für $l$}
+Schöne längen für $l$ sind einfacher zu messen, was ein deutlicher vorteil ist.
+Das Problem ist, das wenn $l$ einen schönen Wert hat, dann wird $T$ relativ sicher keinen schönen Wert haben.
 
-\datadiagram[x label=Pendelmasse $m$ i g,
-  x data=m,
+\subsection{Proportionalität von $T$ zu $l$}
+
+\pgfkeys{
+  /datadiagram/.is family, /datadiagram,
+  x label/.store in=\xlabel,
+  x data/.store in=\xdata,
+  x error/.store in=\xerror,
+  y label/.store in=\ylabel,
+  y data/.store in=\ydata,
+  y error/.store in=\yerror,
+}
+
+\pgfkeys{/datadiagram, x data=l,
+  x label=Pendellänge $l$ in cm,
   x error=0.1,
-  y label=Schwingungsdauer $T$ in s,
+  y label=Periodenlänge $T$ in s,
   y data=T,
-  y error=0.2
-]{Messung_b.csv}
+  y error=0.0
+}
+\begin{center}
+  \begin{tikzpicture}
+    \begin{axis}[
+        axis lines = left,
+        enlargelimits=0.2,
+        ylabel={\ylabel},
+        xlabel={\xlabel},
+        cycle list name=black white
+      ]
+      \addplot+[color=red, domain=0:125, samples=100, mark=none]{sqrt(x)};
+      \addlegendentry{sqrt(x)}
+      \addplot+[only marks] table[x=\xdata, y=\ydata, col sep=comma] {laenge.csv};
+      \addlegendentry{unsere messungen}
+    \end{axis}
+  \end{tikzpicture}
+\end{center}
 
-Da die Differenzen zwischen den Schwingungsdauern bei den verschiedenen Pendelmassen kleiner als die Messfehler sind können wir annehmen, dass die Pendelmasse keinen Einfluss auf die Schwingungsdauer hat.
+Diese Grafik illustriert gut das $T$ proportional zur Wurzel von $l$ ist. 
 
 \subsection{Abhängigkeit Schwingsungsdauer und Amplitude}
 \datatable{2}{Messungen zu Aufgabe c}{Amplitude $\alpha$ in \textdegree & Schwingungsdauer $T$ in s}{Messung_c.csv}

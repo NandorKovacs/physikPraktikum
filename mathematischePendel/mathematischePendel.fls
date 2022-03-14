@@ -329,8 +329,14 @@ INPUT /home/nandor/physikPraktikum/mathematischePendel/Experimentaufbau.png
 INPUT /home/nandor/physikPraktikum/mathematischePendel/Experimentaufbau.png
 INPUT /usr/share/texlive/texmf-dist/fonts/tfm/jknappen/ec/tcrm1200.tfm
 INPUT /home/nandor/physikPraktikum/mathematischePendel/Messung_a.csv
-INPUT /home/nandor/physikPraktikum/mathematischePendel/Messung_b.csv
-INPUT /home/nandor/physikPraktikum/mathematischePendel/Messung_b.csv
+INPUT /home/nandor/physikPraktikum/mathematischePendel/laenge.csv
+INPUT /home/nandor/physikPraktikum/mathematischePendel/masse.csv
+INPUT /home/nandor/physikPraktikum/mathematischePendel/winkelgrad.csv
+INPUT /usr/share/texlive/texmf-dist/fonts/tfm/public/cm/cmmi12.tfm
+INPUT /usr/share/texlive/texmf-dist/fonts/tfm/public/cm/cmsy10.tfm
+INPUT /usr/share/texlive/texmf-dist/fonts/tfm/public/cm/cmex10.tfm
+INPUT /usr/share/texlive/texmf-dist/fonts/tfm/public/amsfonts/cmextra/cmex7.tfm
+INPUT /home/nandor/physikPraktikum/mathematischePendel/laenge.csv
 INPUT /home/nandor/physikPraktikum/mathematischePendel/Messung_c.csv
 INPUT /home/nandor/physikPraktikum/mathematischePendel/Messung_c.csv
 INPUT /home/nandor/physikPraktikum/mathematischePendel/Messung_d.csv
