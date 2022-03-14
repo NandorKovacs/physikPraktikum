@@ -1,0 +1,10 @@
+*.gz
+*.log
+*.fls
+*.fdb_latexmk
+*.blg
+*.bcf
+*.bbl
+*.aux
+*.Identifier
+*.run.xml
