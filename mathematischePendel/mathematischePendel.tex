@@ -66,6 +66,10 @@ Wir berechnen die maximale Abweichung mit diesen Daten.
                & = 0.07s
 \end{align*}
 
+Da die Zeitmessung 5 Periodenlängen entspricht, ist die genauigkeit dementsprechend auch 5mal so gut.
+Das heisst, das $T$ auf $0.014$ genau gemessen ist.
+Die Stoppuhr zeigt $0.01$ genau an, was bei 5 Schwingungen einer Genauigkeit von $0.002$ entsprechen würde.
+
 \vfill\pagebreak
 
 \section{Messungen}
@@ -153,15 +157,63 @@ nehmen wir den Druchschnitt aller $R_l$ die wir ausrechnen können aus unseren M
 Der Literarturwert für $R$ kann man aus dem Literarturwert für $T$ ausrechnen
 
 \begin{align*}
-  T                               & = 2\pi \sqrt{\frac{l}{g}}    \\
-  \frac{1}{2\pi \sqrt{g}}T        & = \sqrt{l}                   \\
+  T                             & = 2\pi \sqrt{\frac{l}{g}}    \\
+  \frac{\sqrt{g}}{2\pi}T        & = \sqrt{l}                   \\
   \\
-  R                               & = \frac{1}{2\pi \sqrt{g}}    \\
+  R                             & = \frac{\sqrt{g}}{2\pi}      \\
   \\
-  \frac{1}{2\pi \sqrt{9.81m/s^2}} & = 0.0508143\frac{s}{sqrt(m)} \\
+  \frac{\sqrt{9.81m/s^2}}{2\pi} & = 0.498488\frac{\sqrt{m}}{s} \\
 \end{align*}
 
 \subsubsection{Fallbeschleunigung mit Fehlerrechnung ausrechnen}
+Nehmen wir an das der Wert für $R$ den wir berechnet haben korrekt ist.
+Das würde heissen, das $R = 0.496168042\frac{\sqrt{m}}{s}$
+
+\begin{align*}
+  \frac{\sqrt{g}}{2\pi} & = 0.496168042\frac{\sqrt{m}}{s}           \\
+  \sqrt{g}              & = 2\pi\cdot 0.496168042\frac{\sqrt{m}}{s} \\
+  g                     & = (2\pi\cdot0.496168042)^2\frac{m}{s^2}   \\
+  g                     & = 9.7189\frac{m}{s^2}                     \\
+\end{align*}
+
+Laut unserem $R$ Wert würde $g$ 9.7182 entsprechen. Fehlerquellen sind die ungenauen Messungen.
+$T$ ist auf $0.014$ genau angegeben, und l auf $0.001$ genau angegeben.
+Das heisst:
+\begin{align*}
+  \Delta T_{absolut} & = 0.014 \\
+  \Delta l_{absolut} & = 0.001 \\
+\end{align*}
+
+Der relative Fehler ändert sich. Hier nehmen wir wieder den Druchschnitt aller relativer Fehler.
+
+\begin{align*}
+  \Delta T_{relativ} & = \frac{1}{n}\sum_{i=0}^{n}\frac{\Delta T_{absolut}}{T_i} \\
+                     & = \frac{0.22}{20}                                         \\
+                     & = 0.011                                                   \\
+  \\
+  \Delta l_{relativ} & = \frac{1}{n}\sum_{i=0}^{n}\frac{\Delta l_{absolut}}{l_i} \\
+                     & = \frac{0.059}{20}                                        \\
+                     & = 0.0295                                                  \\
+  \\
+\end{align*}
+
+Jetzt wo wir alle relative und absolute Messfehler kennen, können wir die restlichen Fehler berechnen
+
+\begin{align*}
+  R                  & = \frac{sqrt(l)}{T}                                \\
+  \Delta R_{absolut} & = \Delta l_{absolut}                               \\
+                     & = 0.001                                            \\
+  \Delta R_{relativ} & = \Delta l_{relativ}\frac{1}{2}+\Delta T_{relativ} \\
+                     & = 0.0295\frac{1}{2} + 0.011                        \\
+                     & = 0.02572                                          \\
+  \\
+  g                  & = (2\pi\cdot R)^2                                  \\
+  \Delta g_{absolut} & =                                                  \\
+  \Delta g_{relativ} & = 2\Delta R                                        \\
+                     & = 0.05144                                          \\
+\end{align*}
+
+Das heisst, das $g = 9.7189 \pm 0.05155\%$
 
 \section{Fazit}
 \section{Reflektion}
