@@ -45,7 +45,8 @@ Es wird ein Gewicht an einem Faden Aufgehängt.
 Sie wird ausgelenkt, losgelassen, und die Zeit der Perioden werden gemessen wenn das Gewicht die Mitte kreuzt.
 Wir lassen ausserdem 5mal das Gewicht pendeln bevor wir es messen, damit ungenauigkeiten ausgependelt werden.
 
-Die länge $l$ messen wir mit einem Massband auf 0.5cm genau und $\alpha$ messen wir mit einer Winklerscheibe auf 2\textdegree genau.
+Die Länge $l$ messen wir mit einem Massband auf 0.5cm genau und $\alpha$ messen wir mit einer Winklerscheibe auf 2\textdegree genau.
+Die Masse $m$ messen wir mit einer Waage auf 0.1g genau.
 Die Zeit messen wir mit einer Stoppuhr. Damit wir genauere Messungen haben, messen wir immer 5 Perioden.
 
 Um die genauigkeit von den Zeitmessungen zu bestimmen, messen wir 20mal mit dem gleichen $\alpha$, $m$, und $l$.
@@ -102,7 +103,7 @@ Das Problem ist, das wenn $l$ einen schönen Wert hat, dann wird $T$ relativ sic
       ]
       \addplot+[color=red, samples=1000, mark=none]{sqrt(x)};
       \addlegendentry{sqrt(x)}
-      \addplot+[only marks] plot [error bars/.cd, y dir=both, x dir=both, x fixed=0.1, y fixed=0.07] table[x expr=\thisrow{l} / 100, y expr=\thisrow{T} / 5, col sep=comma] {laenge.csv};
+      \addplot+[only marks] plot [error bars/.cd, y dir=both, x dir=both, x fixed=0.001, y fixed=0.014] table[x expr=\thisrow{l} / 100, y expr=\thisrow{T} / 5, col sep=comma] {laenge.csv};
       \addlegendentry{unsere messungen}
     \end{axis}
   \end{tikzpicture}
@@ -110,6 +111,7 @@ Das Problem ist, das wenn $l$ einen schönen Wert hat, dann wird $T$ relativ sic
 
 
 Diese Grafik illustriert gut das $T$ proportional zur Wurzel von $l$ ist.
+Die Fehlerbalken sind so klein, dass sie nicht sichtbar sind.
 
 \subsection{Regressionsfunktion \& Fallbeschleunigung ausrechnen}
 \subsubsection{Regressionsparameter berechnen}
@@ -129,30 +131,6 @@ nehmen wir den Druchschnitt aller $R_l$ die wir ausrechnen können aus unseren M
   \\
                & = 0.496168042\frac{s}{sqrt(m)}
 \end{align*}
-
-\begin{center}
-  \pgfplotsset{every axis legend/.append style={
-        at={(1,0)},
-        anchor=south east}}
-  \begin{tikzpicture}
-    \begin{axis}[
-        xmin=-0.2,
-        xmax=2,
-        ymin=0,
-        ymax=2.2,
-        axis lines = left,
-        % enlargelimits=0.2,
-        ylabel={Periodenlänge $T$ in s},
-        xlabel={Pendellänge $l$ in m},
-        cycle list name=black white
-      ]
-      \addplot+[color=red, samples=1000, mark=none]{sqrt(x)};
-      \addlegendentry{sqrt(x)}
-      \addplot+[only marks] plot [error bars/.cd, y dir=both, x dir=both, x fixed=0.1, y fixed=0.07] table[x expr=\thisrow{l} / 100, y expr=\thisrow{T} / 5 * 0.496168042, col sep=comma] {laenge.csv};
-      \addlegendentry{unsere messungen * $\overline{R}$}
-    \end{axis}
-  \end{tikzpicture}
-\end{center}
 
 Der Literarturwert für $R$ kann man aus dem Literarturwert für $T$ ausrechnen
 
@@ -215,10 +193,117 @@ Jetzt wo wir alle relative und absolute Messfehler kennen, können wir die restl
 
 Das heisst, das $g = 9.7189 \pm 0.05155\%$
 
+\subsection{Residuenplot}
+
+\begin{center}
+  \pgfplotsset{every axis legend/.append style={
+        at={(1,0)},
+        anchor=south east}}
+  \begin{tikzpicture}
+    \begin{axis}[
+        xmin=-0.2,
+        xmax=2,
+        ymin=0,
+        ymax=2.2,
+        axis lines = left,
+        % enlargelimits=0.2,
+        ylabel={Periodenlänge $T$ in s},
+        xlabel={Pendellänge $l$ in m},
+        cycle list name=black white
+      ]
+      \addplot+[color=red, samples=1000, mark=none]{sqrt(x)};
+      \addlegendentry{sqrt(x)}
+      \addplot+[only marks] plot [error bars/.cd, y dir=both, x dir=both, x fixed=0.001, y fixed=0.014] table[x expr=\thisrow{l} / 100, y expr=\thisrow{T} / 5 * 0.496168042, col sep=comma] {laenge.csv};
+      \addlegendentry{unsere messungen * $\overline{R}$}
+    \end{axis}
+  \end{tikzpicture}
+\end{center}
+
+\begin{center}
+  \pgfplotsset{every axis legend/.append style={
+        at={(1,1)},
+        anchor=north east}}
+  \begin{tikzpicture}
+    \begin{axis}[
+        xmin=-0.2,
+        xmax=0.5,
+        ymin=0,
+        ymax=2.2,
+        axis lines = left,
+        % enlargelimits=0.2,
+        ylabel={Periodenlänge $T$ in s},
+        xlabel={Pendellänge $l$ in m},
+        cycle list name=black white
+      ]
+      \addplot+[color=red, samples=1000, mark=none]{sqrt(x)};
+      \addlegendentry{sqrt(x)}
+      \addplot+[only marks] plot [error bars/.cd, y dir=both, x dir=both, x fixed=0.001, y fixed=0.014] table[x expr=\thisrow{l} / 100, y expr=\thisrow{T} / 5 * 0.496168042, col sep=comma] {laenge.csv};
+      \addlegendentry{unsere messungen * $\overline{R}$}
+    \end{axis}
+  \end{tikzpicture}
+\end{center}
+
+Anhand von diesen Residuenplots sehen wir,
+dass unser Wert für $R$ der sehr gut der Messgenauigkeit entspricht. 
+Die Fehlerbalken sind so klein, dass man sie nicht einmal sieht beim vergrösserten Plot.
+
+\subsection{Einfluss der Pendelmasse}
+\begin{center}
+  \pgfplotsset{every axis legend/.append style={
+        at={(1,1)},
+        anchor=north east}}
+  \begin{tikzpicture}
+    \begin{axis}[
+        axis lines = left,
+        enlargelimits=0.2,
+        ylabel={Periodenlänge $T$ in s},
+        xlabel={Gewichtsmasse $m$ in g},
+        cycle list name=black white
+      ]
+
+      \addplot+[only marks] plot [error bars/.cd, y dir=both, x dir=both, x fixed=0.1, y fixed=0.014] table[x expr=\thisrow{m}, y expr=\thisrow{T} / 5, col sep=comma] {masse.csv};
+      \addlegendentry{unsere messungen}
+      \addplot+[mark=none, color=red, samples=4, domain=0:400] {1.0133};
+      \addlegendentry{durchschnitt der messungen}
+    \end{axis}
+  \end{tikzpicture}
+\end{center}
+
+Alle Messwerte sind innerhalb von den Fehlerbalken von allen anderen Messwerten.
+$T$ ist unabhängig von $m$ innerhalb von der Messgenauigkeit.
+
+\subsection{Einfluss der Amplitude}
+\begin{center}
+  \pgfplotsset{every axis legend/.append style={
+        at={(1,1)},
+        anchor=north east}}
+  \begin{tikzpicture}
+    \begin{axis}[
+        axis lines = left,
+        enlargelimits=0.2,
+        ylabel={Periodenlänge $T$ in s},
+        xlabel={Amplitude $\alpha$ in winkelgrad},
+        cycle list name=black white
+      ]
+      \addplot+[only marks] plot [error bars/.cd, y dir=both, x dir=both, x fixed=0.1, y fixed=0.014] table[x expr=\thisrow{f}, y expr=\thisrow{T} / 5, col sep=comma] {winkelgrad.csv};
+      \addlegendentry{unsere messungen}
+      \addplot+[mark=none, color=red, samples=4, domain=0:35] {8.48833/5};
+      \addlegendentry{durchschnitt der messungen}
+    \end{axis}
+  \end{tikzpicture}
+\end{center}
+
+Alle Messwerte sind innerhalb von den Fehlerbalken von allen anderen Messwerten.
+$T$ ist unabhängig von $\alpha$ innerhalb von der Messgenauigkeit.
 \section{Fazit}
+Wir können innerhalb von unserer Messgenauigkeit bestätigen das nur die Länge der Pendel die Periodenlänge beeinflusst hier auf der Erde.
+\par
+Wir konnten ausserdem mit einer relativ grossen Genauigkeit($\Delta g_{relativ} = 0.05144$) $g$ wieder ausrechnen.
+
+
 \section{Reflektion}
+Wir haben in diesem Physikpraktikum gelernt wie man Messungen macht, und dessen Fehlerquoten dokumentiert und berrechnet
 \section{Referenzen}
-\printbibliography[heading=none]
 \section{Anhang}
 Versuchsanleitung und Originalprotokoll vom \labdate
 
