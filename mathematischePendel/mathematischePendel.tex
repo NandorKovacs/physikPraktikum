@@ -6,7 +6,7 @@
     title={Mathematisches Pendel},
     subtitle={Untersuchung der Eigenschaften eines Mathematischen Pendels},
     date={\today},
-    labdate={4. März 2022}
+    labdate={10. März 2022}
 ]
 
 \begin{document}
@@ -16,19 +16,19 @@
 
 \section{Einleitung}
 Wir alle kennen Pendeluhren.
-Pendeluhren benutzen statt Quartz stückchen, oder Signale von einer Radiouhr eine Pendel um die Zeit zu verfolgen.
-Das muss heissen, das die Periodenlängen von Pendeln berechenbar sind.
-Falls die Periode von dem Ausschlagwinkel abhängt, würde das aber recht kompliziert sein zum berechnen, also vermuten wir dass das nicht der Fall ist.
+Pendeluhren benutzen statt Quartzstückchen oder Signale von einer Radiouhr eine Pendel, um die Zeit zu verfolgen.
+Das muss heissen, dass die Periodenlängen von Pendeln berechenbar sind.
+Falls die Periode von dem Ausschlagwinkel abhängt, würde das aber recht kompliziert sein zum berechnen, also vermuten wir dass beispielsweise das nicht der Fall ist.
 
 \section{Theorie}
 Eine Pendel hat folgende Parameter:
 \begin{list}{-}{}
-  \item \emph{l} = die Länge der Pendel
-  \item \emph{g} = das Gewicht des Pendelgewichts. Dies ist gleich zur länge der Schnur plus die halbe Dicke des Gewichts.
-  \item \emph{$\alpha$} = die auslenkung beim starten der Pendel in winkelgrad
+  \item $l$ = die Länge der Pendel
+  \item $g$ = das Gewicht des Pendelgewichts. Dies ist gleich zu der Länge der Schnur plus die halbe Dicke des Gewichts.
+  \item $\alpha$ = die Auslenkung beim starten der Pendel in Winkelgrade.
 \end{list}
 
-Die Formel für die länge einer Periode in Sekunden lautet
+Die Formel für die länge einer Periode in Sekunden lautet:
 $$T=2\pi \sqrt{\frac{l}{g}}$$
 \cite{FoTa}
 
@@ -42,8 +42,8 @@ $$T=2\pi \sqrt{\frac{l}{g}}$$
 
 Unser Experiment ist einfach aufgebaut.
 Es wird ein Gewicht an einem Faden Aufgehängt.
-Sie wird ausgelenkt, losgelassen, und die Zeit der Perioden werden gemessen wenn das Gewicht die Mitte kreuzt.
-Wir lassen ausserdem 5mal das Gewicht pendeln bevor wir es messen, damit ungenauigkeiten ausgependelt werden.
+Sie wird ausgelenkt, losgelassen, und es wird die Zeit gemessen, die die Pendel für 5 Perioden braucht.
+Wir starten die Messung wenn die Pendel die Mitte kreuzt, und Enden sie wenn sie 5mal hin und her ist. So werden wir 5mal so prezise sein.
 
 Die Länge $l$ messen wir mit einem Massband auf 0.5cm genau und $\alpha$ messen wir mit einer Winklerscheibe auf 2\textdegree genau.
 Die Masse $m$ messen wir mit einer Waage auf 0.1g genau.
@@ -56,22 +56,23 @@ Wir berechnen die maximale Abweichung mit diesen Daten.
 
 
 \begin{align*}
-  \overline{T} & = \frac{1}{n} \sum_{i=1}^{n} T_{i}=\frac{1}{n}\left(T_{1}+\cdots+T_{n}\right) \\
-               & =\frac{164.01s}{20}                                                           \\
-               & =8.2005s                                                                      \\
+  \overline{T_5} & = \frac{1}{n} \sum_{i=1}^{n} T_{i}=\frac{1}{n}\left(T_{1}+\cdots+T_{n}\right) \\
+                 & =\frac{164.01s}{20}                                                           \\
+                 & =8.2005s                                                                      \\
   \\
-  \Delta T     & = max(T_{max} - \overline{T}, \overline{T} - T_{min})                         \\
-               & = max(8.27s - 8.2005s, 8.2005s - 8.14)                                        \\
-               & = max(0.0695s, 0.0605)                                                        \\
-               & = 0.0695s                                                                     \\
-               & = 0.07s
+  \Delta T_5     & = max(T_{max} - \overline{T}, \overline{T} - T_{min})                         \\
+                 & = max(8.27s - 8.2005s, 8.2005s - 8.14)                                        \\
+                 & = max(0.0695s, 0.0605)                                                        \\
+                 & = 0.0695s                                                                     \\
+                 & = 0.07s                                                                       \\
+  \Delta T       & = \Delta T_5 / 5                                                              \\
+                 & =0.014                                                                        \\
 \end{align*}
 
 Da die Zeitmessung 5 Periodenlängen entspricht, ist die genauigkeit dementsprechend auch 5mal so gut.
 Das heisst, das $T$ auf $0.014$ genau gemessen ist.
 Die Stoppuhr zeigt $0.01$ genau an, was bei 5 Schwingungen einer Genauigkeit von $0.002$ entsprechen würde.
-
-\vfill\pagebreak
+Die Stoppuhr ist also genauer wie unsere Messkünste, und darum nehmen wir den $\Delta T$ von unseren Messkünsten als absoluten Fehler.
 
 \section{Messungen}
 \datatable{2}{$m$ ist konstant, $\alpha$ ist konstant und klein, $l$ ist variabel}{Pendellänge $l$ in cm & Periodenlänge $T$*5 in s}{laenge.csv}{laenge}
@@ -80,7 +81,7 @@ Die Stoppuhr zeigt $0.01$ genau an, was bei 5 Schwingungen einer Genauigkeit von
 
 \section{Aufgaben}
 \subsection{Vor und Nachteile schöner Werte für $l$}
-Schöne längen für $l$ sind einfacher zu messen, was ein deutlicher Vorteil ist.
+Schöne Längen für $l$ sind einfacher zu messen, was ein deutlicher Vorteil ist.
 Das Problem ist, das wenn $l$ einen schönen Wert hat, dann wird $T$ relativ sicher keinen schönen Wert haben.
 
 \subsection{Proportionalität von $T$ zu $l$}
@@ -115,14 +116,14 @@ Die Fehlerbalken sind so klein, dass sie nicht sichtbar sind.
 
 \subsection{Regressionsfunktion \& Fallbeschleunigung ausrechnen}
 \subsubsection{Regressionsparameter berechnen}
-Der Regressionsfaktor $R_l$ ist
+Der Regressionsfaktor $R_l$ ist:
 
 \begin{align*}
   R_l & = \frac{sqrt(l)}{T_l} \\
 \end{align*}
 
 Um eine Annäherung an der allgemeinen Regressionsfaktor zu bekommen,
-nehmen wir den Druchschnitt aller $R_l$ die wir ausrechnen können aus unseren Messresultaten aus Tabelle~\ref{table:laenge}.
+nehmen wir den Druchschnitt aller $R_l$ die wir ausrechnen können aus unseren Messresultaten aus Tabelle~\ref{table:laenge}:
 
 \begin{align*}
   \overline{R} & = \frac{1}{n}\sum_{i=0}^{n} \frac{sqrt(l_i)}{T_i} \\
@@ -132,7 +133,7 @@ nehmen wir den Druchschnitt aller $R_l$ die wir ausrechnen können aus unseren M
                & = 0.496168042\frac{s}{sqrt(m)}
 \end{align*}
 
-Der Literarturwert für $R$ kann man aus dem Literarturwert für $T$ ausrechnen
+Der Literarturwert für $R$ kann man aus dem Literarturwert für $T$ ausrechnen:
 
 \begin{align*}
   T                             & = 2\pi \sqrt{\frac{l}{g}}    \\
@@ -175,7 +176,7 @@ Der relative Fehler ändert sich. Hier nehmen wir wieder den Druchschnitt aller 
   \\
 \end{align*}
 
-Jetzt wo wir alle relative und absolute Messfehler kennen, können wir die restlichen Fehler berechnen
+Jetzt wo wir alle relative und absolute Messfehler kennen, können wir die restlichen Fehler berechnen:
 
 \begin{align*}
   R                  & = \frac{sqrt(l)}{T}                                \\
@@ -306,6 +307,7 @@ Wir haben in diesem Physikpraktikum gelernt wie man Messungen macht, und dessen 
 Wir haben gelernt wie man einen Bericht über Messwerte schreibt.
 
 Wir hatten eine kleine Fehlkomunikation was die Messtechnik anging, was dazu führte das alle unsere Werte halb so gross waren.
+Unsere Fehlerrechnung scheint gut zu sein, aber der Fehler den wir Bekommen haben ist etwas zu klein.
 \section{Anhang}
 Versuchsanleitung und Originalprotokoll vom \labdate
 
