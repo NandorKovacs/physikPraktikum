@@ -159,40 +159,40 @@ Laut unserem $R$ Wert würde $g$ 9.7182 entsprechen. Fehlerquellen sind die unge
 $T$ ist auf $0.014$ genau angegeben, und l auf $0.001$ genau angegeben.
 Das heisst:
 \begin{align*}
-  \Delta T_{absolut} & = 0.014 \\
-  \Delta l_{absolut} & = 0.001 \\
+  \Delta T & = 0.014s \\
+  \Delta l & = 0.001m \\
 \end{align*}
 
 Der relative Fehler ändert sich. Hier nehmen wir wieder den Druchschnitt aller relativer Fehler.
 
 \begin{align*}
-  \Delta T_{relativ} & = \frac{1}{n}\sum_{i=0}^{n}\frac{\Delta T_{absolut}}{T_i} \\
-                     & = \frac{0.22}{20}                                         \\
-                     & = 0.011                                                   \\
+  \Delta r_T & = \frac{1}{n}\sum_{i=0}^{n}\frac{\Delta r_T}{T_i} \\
+             & = \frac{0.22}{20}                                 \\
+             & = 0.011                                           \\
   \\
-  \Delta l_{relativ} & = \frac{1}{n}\sum_{i=0}^{n}\frac{\Delta l_{absolut}}{l_i} \\
-                     & = \frac{0.059}{20}                                        \\
-                     & = 0.0295                                                  \\
+  \Delta r_l & = \frac{1}{n}\sum_{i=0}^{n}\frac{\Delta r_l}{l_i} \\
+             & = \frac{0.059}{20}                                \\
+             & = 0.0295                                          \\
   \\
 \end{align*}
 
 Jetzt wo wir alle relative und absolute Messfehler kennen, können wir die restlichen Fehler berechnen:
 
 \begin{align*}
-  R                  & = \frac{sqrt(l)}{T}                                \\
-  \Delta R_{absolut} & = \Delta l_{absolut}                               \\
-                     & = 0.001                                            \\
-  \Delta R_{relativ} & = \Delta l_{relativ}\frac{1}{2}+\Delta T_{relativ} \\
-                     & = 0.0295\frac{1}{2} + 0.011                        \\
-                     & = 0.02572                                          \\
+  R          & = \frac{sqrt(l)}{T}                           \\
+  \Delta r_R & = \Delta r_l\frac{1}{2}+\Delta r_T            \\
+             & = 0.0295\frac{1}{2} + 0.011                   \\
+             & = 0.02572                                     \\
   \\
-  g                  & = (2\pi\cdot R)^2                                  \\
-  \Delta g_{absolut} & =                                                  \\
-  \Delta g_{relativ} & = 2\Delta R                                        \\
-                     & = 0.05144                                          \\
-\end{align*}
+  g          & = (2\pi\cdot R)^2                             \\
+  \Delta r_g & = 2\Delta R                                   \\
+             & = 0.05144                                     \\
+  \Delta g   & = g * \Delta r_g                              \\
+             & = 9.7189\frac{m}{s^2} * 0.05144               \\
+             & = 0.49994\frac{m}{s^2} \approx 0.5\frac{m}{s^2} \\
+\end{align*}                     
 
-Das heisst, das $g = 9.7189 \pm 0.05155\%$
+Das heisst, das $g = 9.7189\frac{m}{s^2} \pm 0.5\frac{m}{s^2}$
 
 \subsection{Residuenplot}
 
