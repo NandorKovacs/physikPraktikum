@@ -122,7 +122,7 @@ Mit Excel können wir einfach die Regressionsfunktion ausrechen. Die ist:
   f(x) = 2.003x^{0.4922}
 \end{align*}
 
-Der Exponent ist nahe genug zu $\frac{1}{2}$, so dass wir $1/2.003 = 0.49925112331$ als Regressionsfaktor $R$ nehmen können. 
+Der Exponent ist nahe genug zu $\frac{1}{2}$, so dass wir $1/2.003 = 0.49925112331$ als Regressionsfaktor $R$ nehmen können.
 Das heisst, dass wenn wir alle unsere Datenpünkte mit $R$ multiplizieren, alle unsere Punkte auf die Wurzelfunktion liegen sollten. \\
 Den Literarturwert für $R$ kann man aus dem Literarturwert für $T$ ausrechnen:
 
@@ -137,16 +137,16 @@ Den Literarturwert für $R$ kann man aus dem Literarturwert für $T$ ausrechnen:
 
 \subsubsection{Fallbeschleunigung mit Fehlerrechnung ausrechnen}
 Nehmen wir an das der Wert für $R$ den wir berechnet haben korrekt ist.
-Das würde heissen, das $R = 0.496168042\frac{\sqrt{m}}{s}$
+Das würde heissen, das $R = 0.499251123312\frac{\sqrt{m}}{s}$
 
 \begin{align*}
-  \frac{\sqrt{g}}{2\pi} & = 0.496168042\frac{\sqrt{m}}{s}           \\
-  \sqrt{g}              & = 2\pi\cdot 0.496168042\frac{\sqrt{m}}{s} \\
-  g                     & = (2\pi\cdot0.496168042)^2\frac{m}{s^2}   \\
-  g                     & = 9.7189\frac{m}{s^2}                     \\
+  \frac{\sqrt{g}}{2\pi} & = 0.49925112331\frac{\sqrt{m}}{s}           \\
+  \sqrt{g}              & = 2\pi\cdot 0.49925112331\frac{\sqrt{m}}{s} \\
+  g                     & = (2\pi\cdot 0.49925112331)^2\frac{m}{s^2}  \\
+  g                     & = 9.84006207453\frac{m}{s^2}                \\
 \end{align*}
 
-Laut unserem $R$ Wert würde $g$ 9.7182 entsprechen. Fehlerquellen sind die ungenauen Messungen.
+Laut unserem $R$ Wert würde $g$ 9.84006207453 entsprechen. Fehlerquellen sind die ungenauen Messungen.
 $T$ ist auf $0.014$ genau angegeben, und l auf $0.001$ genau angegeben.
 Das heisst:
 \begin{align*}
@@ -167,23 +167,22 @@ Der relative Fehler ändert sich. Hier nehmen wir wieder den Druchschnitt aller 
   \\
 \end{align*}
 
-Jetzt wo wir alle relative und absolute Messfehler kennen, können wir die restlichen Fehler berechnen:
+Der relative Fehler des Regressionsfaktors $\Delta r_R$ können wir berechnen, indem wir für jeden Datenpunkt den Regressionsfaktor berechnen, und das nehmen was am weitesten entfernt ist.
 
 \begin{align*}
-  R          & = \frac{sqrt(l)}{T}                           \\
-  \Delta r_R & = \Delta r_l\frac{1}{2}+\Delta r_T            \\
-             & = 0.0295\frac{1}{2} + 0.011                   \\
-             & = 0.02572                                     \\
+  R_i        & = \frac{\sqrt{l_i}}{T_i}                   \\
+  \Delta r_R & = max(R_{max} - R, r - R_{min})            \\
+  \Delta r_R & = 0.014239212                              \\
   \\
-  g          & = (2\pi\cdot R)^2                             \\
-  \Delta r_g & = 2\Delta R                                   \\
-             & = 0.05144                                     \\
-  \Delta g   & = g * \Delta r_g                              \\
-             & = 9.7189\frac{m}{s^2} * 0.05144               \\
-             & = 0.49994\frac{m}{s^2} \approx 0.5\frac{m}{s^2} \\
-\end{align*}                     
+  g          & = (2\pi\cdot R)^2                          \\
+  \Delta r_g & = 2\Delta R                                \\
+             & = 0.028478424                              \\
+  \Delta g   & = g * \Delta r_g                           \\
+             & = 9.84006207453\frac{m}{s^2} * 0.028478424 \\
+             & = 0.28022945994\frac{m}{s^2}               \\
+\end{align*}
 
-Das heisst, das $g = 9.7189\frac{m}{s^2} \pm 0.5\frac{m}{s^2}$
+Das heisst, das $g = 9.84006207453\frac{m}{s^2} \pm 0.28022945994\frac{m}{s^2}$
 
 \subsection{Residuenplot}
 
@@ -205,7 +204,7 @@ Das heisst, das $g = 9.7189\frac{m}{s^2} \pm 0.5\frac{m}{s^2}$
       ]
       \addplot+[color=red, samples=1000, mark=none]{sqrt(x)};
       \addlegendentry{sqrt(x)}
-      \addplot+[only marks] plot [error bars/.cd, y dir=both, x dir=both, x fixed=0.001, y fixed=0.014] table[x expr=\thisrow{l} / 100, y expr=\thisrow{T} / 5 * 0.496168042, col sep=comma] {laenge.csv};
+      \addplot+[only marks] plot [error bars/.cd, y dir=both, x dir=both, x fixed=0.001, y fixed=0.014] table[x expr=\thisrow{l} / 100, y expr=\thisrow{T} / 5 * 0.49925112331, col sep=comma] {laenge.csv};
       \addlegendentry{unsere messungen * $\overline{R}$}
     \end{axis}
   \end{tikzpicture}
@@ -229,7 +228,7 @@ Das heisst, das $g = 9.7189\frac{m}{s^2} \pm 0.5\frac{m}{s^2}$
       ]
       \addplot+[color=red, samples=1000, mark=none]{sqrt(x)};
       \addlegendentry{sqrt(x)}
-      \addplot+[only marks] plot [error bars/.cd, y dir=both, x dir=both, x fixed=0.001, y fixed=0.014] table[x expr=\thisrow{l} / 100, y expr=\thisrow{T} / 5 * 0.496168042, col sep=comma] {laenge.csv};
+      \addplot+[only marks] plot [error bars/.cd, y dir=both, x dir=both, x fixed=0.001, y fixed=0.014] table[x expr=\thisrow{l} / 100, y expr=\thisrow{T} / 5 * 0.49925112331, col sep=comma] {laenge.csv};
       \addlegendentry{unsere messungen * $\overline{R}$}
     \end{axis}
   \end{tikzpicture}
