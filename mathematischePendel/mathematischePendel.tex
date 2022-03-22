@@ -116,24 +116,15 @@ Die Fehlerbalken sind so klein, dass sie nicht sichtbar sind.
 
 \subsection{Regressionsfunktion \& Fallbeschleunigung ausrechnen}
 \subsubsection{Regressionsparameter berechnen}
-Der Regressionsfaktor $R_l$ ist:
+Mit Excel können wir einfach die Regressionsfunktion ausrechen. Die ist:
 
 \begin{align*}
-  R_l & = \frac{sqrt(l)}{T_l} \\
+  f(x) = 2.003x^{0.4922}
 \end{align*}
 
-Um eine Annäherung an der allgemeinen Regressionsfaktor zu bekommen,
-nehmen wir den Druchschnitt aller $R_l$ die wir ausrechnen können aus unseren Messresultaten aus Tabelle~\ref{table:laenge}:
-
-\begin{align*}
-  \overline{R} & = \frac{1}{n}\sum_{i=0}^{n} \frac{sqrt(l_i)}{T_i} \\
-  \\
-               & = \frac{9.923360844s}{20\sqrt{m}}                 \\
-  \\
-               & = 0.496168042\frac{s}{sqrt(m)}
-\end{align*}
-
-Der Literarturwert für $R$ kann man aus dem Literarturwert für $T$ ausrechnen:
+Der Exponent ist nahe genug zu $\frac{1}{2}$, so dass wir $1/2.003 = 0.49925112331$ als Regressionsfaktor $R$ nehmen können. 
+Das heisst, dass wenn wir alle unsere Datenpünkte mit $R$ multiplizieren, alle unsere Punkte auf die Wurzelfunktion liegen sollten. \\
+Den Literarturwert für $R$ kann man aus dem Literarturwert für $T$ ausrechnen:
 
 \begin{align*}
   T                             & = 2\pi \sqrt{\frac{l}{g}}    \\
