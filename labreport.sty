@@ -69,14 +69,14 @@
 
 % Table of data from csv
 % TODO: currently only works with two data columns, use #1 for column count
-\newcommand{\datatable}[5]{
+\newcommand{\datatable}[6]{
     \begin{table}[H]\centering
         \csvreader[
-          tabular=c|c,
-          table head=#3\\\hline,
-        ]{#4}{}{\csvcoli & \csvcolii}
-        \caption{#2}
-        \label{table:#5}
+          tabular=#1,
+          table head=#4\\\hline,
+        ]{#5}{}{#2}
+        \caption{#3}
+        \label{table:#6}
     \end{table}
 }
 

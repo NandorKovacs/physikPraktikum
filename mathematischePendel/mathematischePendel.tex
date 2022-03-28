@@ -1,5 +1,5 @@
 \documentclass[12pt, a4paper, twoside]{article}
-\usepackage{labreport}
+\usepackage{../labreport}
 \usepackage{pdfpages}
 
 \setlabreportopts[authors={Nandor Kovacs \& Céline Schuster},
@@ -52,7 +52,7 @@ Die Zeit messen wir mit einer Stoppuhr. Damit wir genauere Messungen haben, mess
 Um die genauigkeit von den Zeitmessungen zu bestimmen, messen wir 20mal mit dem gleichen $\alpha$, $m$, und $l$.
 Wir berechnen die maximale Abweichung mit diesen Daten.
 
-\datatable{2}{Messungen zur Vorbereitung}{Nr. & Periodenlänge $T$*5 in s}{precision.csv}{precision}
+\datatable{c|c}{\csvcoli & \csvcolii}{Messungen zur Vorbereitung}{Nr. & Periodenlänge $T$*5 in s}{precision.csv}{precision}
 
 
 \begin{align*}
@@ -75,9 +75,9 @@ Die Stoppuhr zeigt $0.01$ genau an, was bei 5 Schwingungen einer Genauigkeit von
 Die Stoppuhr ist also genauer wie unsere Messkünste, und darum nehmen wir den $\Delta T$ von unseren Messkünsten als absoluten Fehler.
 
 \section{Messungen}
-\datatable{2}{$m$ ist konstant, $\alpha$ ist konstant und klein, $l$ ist variabel}{Pendellänge $l$ in cm & Periodenlänge $T$*5 in s}{laenge.csv}{laenge}
-\datatable{2}{$l$ ist konstant, $\alpha$ ist konstant und klein, $m$ ist variabel}{Gewichtsmasse $m$ in g & Periodenlänge $T$*5 in s}{masse.csv}{masse}
-\datatable{2}{$l$ ist konstant, $m$ ist konstant, $\alpha$ ist variabel}{Amplitude $\alpha$ in Winkelgrad & Periodenlänge $T$*5 in s}{winkelgrad.csv}{winkel}
+\datatable{c|c}{\csvcoli & \csvcolii}{$m$ ist konstant, $\alpha$ ist konstant und klein, $l$ ist variabel}{Pendellänge $l$ in cm & Periodenlänge $T$*5 in s}{laenge.csv}{laenge}
+\datatable{c|c}{\csvcoli & \csvcolii}{$l$ ist konstant, $\alpha$ ist konstant und klein, $m$ ist variabel}{Gewichtsmasse $m$ in g & Periodenlänge $T$*5 in s}{masse.csv}{masse}
+\datatable{c|c}{\csvcoli & \csvcolii}{$l$ ist konstant, $m$ ist konstant, $\alpha$ ist variabel}{Amplitude $\alpha$ in Winkelgrad & Periodenlänge $T$*5 in s}{winkelgrad.csv}{winkel}
 
 \section{Aufgaben}
 \subsection{Vor und Nachteile schöner Werte für $l$}
