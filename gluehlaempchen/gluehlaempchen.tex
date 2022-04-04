@@ -14,16 +14,22 @@
 \maketitlepage
 \includepdf[pages={1}]{aufgabenstellung.pdf}
 \section{Einleitung}
-Im Gegensatz zu konventionellen Widerständen sind Strom und Spannung bei Glühlampen nicht proportional zueinander.
-Dennoch stehen diese Größen in einem gewissen Verhältnis zueinander. Wie sie zusammenhängen, ist das Thema dieses Praktikums
+Im Gegensatz zu herkömmlichen Widerständen ($R$) sind Strom ($I$) und Spannung ($U$) bei Glühlampen nicht proportional zueinander. Dennoch stehen diese Größen in einem gewissen Verhältnis.
+In diesem Praktikum messen wir alle Werte in verschiedenen Szenarien, um ihre Beziehung herauszufinden. 
 
 
 \section{Theorie}
+Alle unsere Schaltkreise haben drei Hauptparameter:
+\begin{list}{-}{}
+  \item $I$ = die Stromspannung
+  \item $U$ = die Stromstärke
+\end{list}
 
 \section{Experiment}
 Das Experiment bestand aus verschiedenen Stromkreisen, und Messungen an diesen Stromkreisen.
-\section{Messungen}
-Für dem folgenden Stromkreis haben wir zehn Messungen gemacht.
+\\
+\par
+Für dem folgenden Stromkreis haben wir zehn Messungen gemacht für das Lämpchen 1, 5 für Lämpchen 2, und weitere 5 für Lämpchen 3.
 Bei allen zehn haben wir verschiedene Spannungen angehängt.\\
 \begin{align}
   \begin{circuitikz}
@@ -31,8 +37,16 @@ Bei allen zehn haben wir verschiedene Spannungen angehängt.\\
   \end{circuitikz}
 \end{align}
 
-\datatable{c|c|c}{\csvcoli & \csvcolii & \csvcoliii}{Messungen zu der Messgenauigket}{$U_{start}$ & $U_{gemessen}$ & $I_{gemessen}$}{error.csv}{error}
+\datatable{c|c|c}{\csvcoli & \csvcolii & \csvcoliii}{Lämpchen 1}{$U_{start}$ & $U_{gemessen}$ & $I_{gemessen}$}{lamp1.csv}{lamp1}
+\datatable{c|c|c}{\csvcoli & \csvcolii & \csvcoliii}{Lämpchen 2}{$U_{start}$ & $U_{gemessen}$ & $I_{gemessen}$}{lamp2.csv}{lamp2}
+\datatable{c|c|c}{\csvcoli & \csvcolii & \csvcoliii}{Lämpchen 3}{$U_{start}$ & $U_{gemessen}$ & $I_{gemessen}$}{lamp2.csv}{error}
 
+Für diesen nächsten Stromkreis haben wir mehrere Messungen gemacht.
+\begin{align}
+  \begin{circuitikz}
+    \draw (0, 0) to[vsource] (0, 4) to [lamp] (2, 4) to[lamp] (4, 4) to[rmeterwa, t=V, l=$U_{gemessen}$] (4, 0) -- (0, 0) (0.25, 4) -- (0.25, 5) to[rmeterwa, t=V, l=$U_{gemessen}$] (3.75, 5) -- (3.75, 4);
+  \end{circuitikz}
+\end{align}
 
 
 
