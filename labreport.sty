@@ -80,6 +80,16 @@
     \end{table}
 }
 
+\newcommand{\circuit}[1]{
+  \begin{center}
+    \begin{adjustbox}{scale=1}
+      \begin{circuitikz} \draw
+        #1;
+      \end{circuitikz}
+    \end{adjustbox}
+  \end{center}
+}
+
 % Diagram of data from csv
 \pgfkeys{
     /datadiagram/.is family, /datadiagram,

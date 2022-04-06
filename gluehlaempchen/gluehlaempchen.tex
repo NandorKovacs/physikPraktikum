@@ -28,30 +28,34 @@ Alle unsere Schaltkreise haben drei Hauptparameter:
 
 \section{Experiment}
 Das Experiment bestand aus verschiedenen Stromkreisen, und Messungen an diesen Stromkreisen.
-\\
 \par
 Für dem folgenden Stromkreis haben wir zehn Messungen gemacht für das Lämpchen 1, 5 für Lämpchen 2, und weitere 5 für Lämpchen 3.
 Bei allen zehn haben wir verschiedene Spannungen angehängt.\\
-\begin{align}
-  \begin{circuitikz}
-    \draw (0, 0.5) to[vsource] (0, 4) to[lamp] (4, 4) to[rmeterwa, t=A, l=$I_{gemessen}$] (4, 0.5) -- (0, 0.5) (0.5, 4) -- (0.5, 5) to[rmeterwa, t=V, l=$U_{gemessen}$] (3.5, 5) -- (3.5, 4);
-  \end{circuitikz}
-\end{align}
+
+\circuit{
+  (0, 0) to[vsource] (0, 5) to[lamp] (8, 5) to[rmeterwa, t=A, l=$I_{gemessen}$] (8, 0) -- (0, 0)
+  (2, 5) -- (2, 6) to[rmeterwa, t=V, l=$U_{gemessen}$] (6, 6) -- (6, 5)
+  
+}
 
 \datatable{c|c|c}{\csvcoli & \csvcolii & \csvcoliii}{Lämpchen 1}{$U_{start}$ & $U_{gemessen}$ & $I_{gemessen}$}{a_lamp1.csv}{a_lamp1}
 \datatable{c|c|c}{\csvcoli & \csvcolii & \csvcoliii}{Lämpchen 2}{$U_{start}$ & $U_{gemessen}$ & $I_{gemessen}$}{a_lamp2.csv}{a_lamp2}
 \datatable{c|c|c}{\csvcoli & \csvcolii & \csvcoliii}{Lämpchen 3}{$U_{start}$ & $U_{gemessen}$ & $I_{gemessen}$}{a_lamp2.csv}{a_lamp3}
 
-Für diesen nächsten zwei Stromkreise haben wir je eine Messung gemacht:
-\begin{align}
-  \begin{circuitikz}
-    \draw (0, 0) to[vsource] (0, 4) to [lamp, l=1] (2, 4) to[lamp, l=2] (4, 4) to[rmeterwa, t=A, l=$I_{gemessen}$] (4, 0) -- (0, 0) (0.25, 4) -- (0.25, 5) to[rmeterwa, t=V, l=$U_{gemessen}$] (3.75, 5) -- (3.75, 4);
-  \end{circuitikz}
-\end{align}
+Für diese nächsten zwei Stromkreise haben wir je eine Messung gemacht:
 
-\datatable{c|c|c|c}{\csvcoli & \csvcolii & \csvcoliii & \csvcoliv}{Lämpchen 1}{$U_{gemessen}$ & $I_{total}$ & $I_{1}$ & $I_{2}$}{b_lamp1.csv}{b}
+\circuit{
+  (0, 0) to[vsource] (0, 5) to[lamp, l=1] (4, 5) to[lamp, l=2] (8, 5) to[rmeterwa, t=A, l=$I_{gemessen}$] (8, 0) -- (0, 0)
+  (1, 5) -- (1, 6) to[rmeterwa, t=V, l=$U_{gemessen}$] (7, 6) -- (7, 5)
+}
 
+\datatable{c|c|c|c}{\csvcoli & \csvcolii & \csvcoliii & \csvcoliv}{In serie geschaltet}{$U_{gemessen}$ & $I_{total}$ & $I_{1}$ & $I_{2}$}{b_lamp1.csv}{serie}
 
+\circuit{
+  (0, 0) to[vsource] (0, 5) to[lamp] (8, 5) to[rmeterwa, t=A, l=$I_{gemessen}$] (8, 0) -- (0, 0)
+  (2, 5) -- (2, 6.5) to[rmeterwa, t=V, l=$U_{gemessen}$] (6, 6.5) -- (6, 5)
+  (2, 5) -- (2, 3.5) to[rmeterwa, t=V, l=$U_{gemessen}$] (6, 3.5) -- (6, 5)
+}
 
 \section{Aufgaben}
 \section{Fazit}
