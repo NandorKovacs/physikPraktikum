@@ -2,6 +2,7 @@
 \usepackage{../labreport}
 \usepackage{pdfpages}
 \usepackage{circuitikz}
+\usepackage{adjustbox}
 
 \setlabreportopts[authors={Nandor Kovacs \& Céline Schuster},
     title={Glühlämpchen},
@@ -15,7 +16,7 @@
 \includepdf[pages={1}]{aufgabenstellung.pdf}
 \section{Einleitung}
 Im Gegensatz zu herkömmlichen Widerständen ($R$) sind Strom ($I$) und Spannung ($U$) bei Glühlampen nicht proportional zueinander. Dennoch stehen diese Größen in einem gewissen Verhältnis.
-In diesem Praktikum messen wir alle Werte in verschiedenen Szenarien, um ihre Beziehung herauszufinden. 
+In diesem Praktikum messen wir alle Werte in verschiedenen Szenarien, um ihre Beziehung herauszufinden.
 
 
 \section{Theorie}
@@ -37,16 +38,18 @@ Bei allen zehn haben wir verschiedene Spannungen angehängt.\\
   \end{circuitikz}
 \end{align}
 
-\datatable{c|c|c}{\csvcoli & \csvcolii & \csvcoliii}{Lämpchen 1}{$U_{start}$ & $U_{gemessen}$ & $I_{gemessen}$}{lamp1.csv}{lamp1}
-\datatable{c|c|c}{\csvcoli & \csvcolii & \csvcoliii}{Lämpchen 2}{$U_{start}$ & $U_{gemessen}$ & $I_{gemessen}$}{lamp2.csv}{lamp2}
-\datatable{c|c|c}{\csvcoli & \csvcolii & \csvcoliii}{Lämpchen 3}{$U_{start}$ & $U_{gemessen}$ & $I_{gemessen}$}{lamp2.csv}{error}
+\datatable{c|c|c}{\csvcoli & \csvcolii & \csvcoliii}{Lämpchen 1}{$U_{start}$ & $U_{gemessen}$ & $I_{gemessen}$}{a_lamp1.csv}{a_lamp1}
+\datatable{c|c|c}{\csvcoli & \csvcolii & \csvcoliii}{Lämpchen 2}{$U_{start}$ & $U_{gemessen}$ & $I_{gemessen}$}{a_lamp2.csv}{a_lamp2}
+\datatable{c|c|c}{\csvcoli & \csvcolii & \csvcoliii}{Lämpchen 3}{$U_{start}$ & $U_{gemessen}$ & $I_{gemessen}$}{a_lamp2.csv}{a_lamp3}
 
-Für diesen nächsten Stromkreis haben wir mehrere Messungen gemacht.
+Für diesen nächsten zwei Stromkreise haben wir je eine Messung gemacht:
 \begin{align}
   \begin{circuitikz}
-    \draw (0, 0) to[vsource] (0, 4) to [lamp] (2, 4) to[lamp] (4, 4) to[rmeterwa, t=V, l=$U_{gemessen}$] (4, 0) -- (0, 0) (0.25, 4) -- (0.25, 5) to[rmeterwa, t=V, l=$U_{gemessen}$] (3.75, 5) -- (3.75, 4);
+    \draw (0, 0) to[vsource] (0, 4) to [lamp, l=1] (2, 4) to[lamp, l=2] (4, 4) to[rmeterwa, t=A, l=$I_{gemessen}$] (4, 0) -- (0, 0) (0.25, 4) -- (0.25, 5) to[rmeterwa, t=V, l=$U_{gemessen}$] (3.75, 5) -- (3.75, 4);
   \end{circuitikz}
 \end{align}
+
+\datatable{c|c|c|c}{\csvcoli & \csvcolii & \csvcoliii & \csvcoliv}{Lämpchen 1}{$U_{gemessen}$ & $I_{total}$ & $I_{1}$ & $I_{2}$}{b_lamp1.csv}{b}
 
 
 
