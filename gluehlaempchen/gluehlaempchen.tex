@@ -75,7 +75,7 @@ Beobachtung: Unsere Vermutung war richtig
 \datatable{c|c|c|c|c|c}{\csvcoli & \csvcolii & \csvcoliii & \csvcoliv & \csvcolv & \csvcolvi}{F$i$}{$U_{start}$ & $U_{gemessen}$ & $I_{total}$ & $I_{1}$ & $I_{2}$ & $I_{3}$}{f_1.csv}{f1}
 
 \circuit{
-  (0, 0) to[vsource] (0, 5) 
+  (0, 0) to[vsource] (0, 5)
   to[lamp, l=1] (4, 5) to[lamp, l=3]
   (8, 5) -- (8, 0) -- (0, 0)
   (1, 5) -- (1, 6) to[lamp, l=2] (7, 6) -- (7, 5)
@@ -142,8 +142,15 @@ Beobachtung: Unsere Vermutung war richtig
   ylabel={Widerstand $R$ in Ohm},
   xlabel={Spannung $U$ in milli Ampere},
 }{
-  \addplot+[color=red] table[x expr=\thisrow{a}, y expr=\thisrow{v} / \thisrow{a}, col sep=comma] {a_lamp1.csv};
+  \addplot+[color=red, clip mode=individual] table[x expr=\thisrow{a}, y expr=\thisrow{v} / \thisrow{a}, col sep=comma] {a_lamp1.csv};
+  \addlegendentry{Lämpchen 1};
+  \addplot+[color=lime, samples=4, domain=47:127]{0.0012926*x + 0.0446};
+  \addlegendentry{0.0012926*x + 0.0446}
 }
+Lineare Regressionsfunktion:
+$y = 0.0012926\frac{V}{mA^2}x + 0.0446\frac{V}{mA}$\\
+Steigung: $0.0012926\frac{V}{mA^2}$\\
+Achsenabschnitt: $0.0446\frac{V}{mA}$
 
 
 \datadiagram{
@@ -151,17 +158,31 @@ Beobachtung: Unsere Vermutung war richtig
   ylabel={Widerstand $R$ in Ohm},
   xlabel={Spannung $U$ in milli Ampere},
 }{
-  \addplot+[color=green] table[x expr=\thisrow{a}, y expr=\thisrow{v} / \thisrow{a}, col sep=comma] {a_lamp2.csv};
+  \addplot+[color=green, clip mode=individual] table[x expr=\thisrow{a}, y expr=\thisrow{v} / \thisrow{a}, col sep=comma] {a_lamp2.csv};
+  \addlegendentry{Lämpchen 2};
+  \addplot+[color=lime, samples=4, domain=47:127]{0.0013087*x + 0.0377};
+  \addlegendentry{0.0013087*x + 0.0377}
 }
+Lineare Regressionsfunktion: $y = 0.0013087\frac{V}{mA^2}x + 0.0377\frac{V}{mA}$\\
+Steigung: $0.0013087\frac{V}{mA^2}$\\
+Achsenabschnitt: $0.0377\frac{V}{mA}$
+
 \datadiagram{
   enlargelimits=0.2,
   ylabel={Widerstand $R$ in Ohm},
   xlabel={Spannung $U$ in milli Ampere},
 }{
-  \addplot+[color=cyan] table[x expr=\thisrow{a}, y expr=\thisrow{v} / \thisrow{a}, col sep=comma] {a_lamp3.csv};
+  \addplot+[color=cyan, clip mode=individual] table[x expr=\thisrow{a}, y expr=\thisrow{v} / \thisrow{a}, col sep=comma] {a_lamp3.csv};
+  \addlegendentry{Lämpchen 3};
+  \addplot+[color=lime, samples=4, domain=47:127]{0.0014176*x + 0.0365};
+  \addlegendentry{0.0014176*x + 0.0365}
 }
+Lineare Regressionsfunktion:
+$y = 0.0014176\frac{V}{mA^2}x + 0.0365\frac{V}{mA}$\\
+Steigung: $0.0014176\frac{V}{mA^2}$\\
+Achsenabschnitt: $0.0365\frac{V}{mA}$
 
-
+\subsection{Stromstärke als Funktion der Spannung}
 
 
 \section{Fazit}
