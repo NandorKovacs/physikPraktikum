@@ -16,16 +16,22 @@
 \maketitlepage
 \includepdf[pages={1}]{aufgabenstellung.pdf}
 \section{Einleitung}
-Im Gegensatz zu herkömmlichen Widerständen ($R$) sind Strom ($I$) und Spannung ($U$) bei Glühlampen nicht proportional zueinander. Dennoch stehen diese Größen in einem gewissen Verhältnis.
-In diesem Praktikum messen wir alle Werte in verschiedenen Szenarien, um ihre Beziehung herauszufinden.
+Im Gegensatz zu herkömmlichen Widerständen (R) sind Strom (I) und Spannung (U) bei Glühlampen nicht proportional zueinander. Dennoch stehen diese Grössen in einem gewissen Verhältnis zueinander. Ziel dieses Berichts ist es, das Verhalten einer Glühbirne zu analysieren. Zunächst werden die Auswirkungen auf das Verhältnis zwischen Spannung und Stromstärke untersucht in den Parallel- und Serieschaltung von Glühbirnen und die Spannungsverteilung bei drei nicht trivialen Schaltungen.
 
 
 \section{Theorie}
-Alle unsere Schaltkreise haben drei Hauptparameter:
-\begin{list}{-}{}
-  \item $I$ = die Stromspannung
-  \item $U$ = die Stromstärke
-\end{list}
+Der Widerstand $R$ ist gleich zur Stromspannung über der Stromstärke.
+\begin{align*}
+  R = \frac{V}{A}
+\end{align*}
+
+Für herkömmliche Widerstände gilt:
+
+\begin{align*}
+  R_{serie} &= \sum_{i}R_i\\
+  \frac{1}{R_{parallel}} &= \sum_{i} \frac{1}{R_i}
+\end{align*}
+\cite{FoTa, S.176}
 
 \section{Experiment}
 Das Experiment bestand aus verschiedenen Stromkreisen, und Messungen an diesen Stromkreisen.
