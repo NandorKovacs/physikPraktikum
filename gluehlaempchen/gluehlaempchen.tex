@@ -116,45 +116,53 @@ Beobachtung: Unsere Vermutung war richtig
 \section{Aufgaben}
 \subsection{Strom-Spannungs- \& Wiederstands-Strom-Kennlinien}
 
-\begin{center}
-  \pgfplotsset{every axis legend/.append style={
-        at={(1,0)},
-        anchor=south east}}
-  \begin{tikzpicture}
-    \begin{axis}[
-        axis lines = left,
-        enlargelimits=0.2,
-        ylabel={Stromstärke $I$ in Volt},
-        xlabel={Spannung $U$ in milli Ampere},
-        cycle list name=black white
-      ]
-      \addplot+[color=red] table[x expr=\thisrow{a}, y expr=\thisrow{v}, col sep=comma] {a_lamp1.csv};
-      \addplot+[color=green] table[x expr=\thisrow{a}, y expr=\thisrow{v}, col sep=comma] {a_lamp2.csv};
-      \addplot+[color=cyan] table[x expr=\thisrow{a}, y expr=\thisrow{v}, col sep=comma] {a_lamp3.csv};
-    \end{axis}
-  \end{tikzpicture}
-\end{center}
+\datadiagram{
+  enlargelimits=0.2,
+  ylabel={Stromstärke $I$ in Volt},
+  xlabel={Spannung $U$ in milli Ampere}
+}{
+  \addplot+[color=red] table[x expr=\thisrow{a}, y expr=\thisrow{v}, col sep=comma] {a_lamp1.csv};
+  \addplot+[color=green] table[x expr=\thisrow{a}, y expr=\thisrow{v}, col sep=comma] {a_lamp2.csv};
+  \addplot+[color=cyan] table[x expr=\thisrow{a}, y expr=\thisrow{v}, col sep=comma] {a_lamp3.csv};
+}
 
-\begin{center}
-  \pgfplotsset{every axis legend/.append style={
-        at={(1,0)},
-        anchor=south east}}
-  \begin{tikzpicture}
-    \begin{axis}[
-        axis lines = left,
-        enlargelimits=0.2,
-        ylabel={Widerstand $R$ in Ohm},
-        xlabel={Spannung $U$ in milli Ampere},
-        cycle list name=black white
-      ]
-      \addplot+[color=red] table[x expr=\thisrow{a}, y expr=\thisrow{v} / \thisrow{a}, col sep=comma] {a_lamp1.csv};
-      \addplot+[color=green] table[x expr=\thisrow{a}, y expr=\thisrow{v} / \thisrow{a}, col sep=comma] {a_lamp2.csv};
-      \addplot+[color=cyan] table[x expr=\thisrow{a}, y expr=\thisrow{v} / \thisrow{a}, col sep=comma] {a_lamp3.csv};
-    \end{axis}
-  \end{tikzpicture}
-\end{center}
+\datadiagram{
+  enlargelimits=0.2,
+  ylabel={Widerstand $R$ in Ohm},
+  xlabel={Spannung $U$ in milli Ampere},
+}{
+  \addplot+[color=red] table[x expr=\thisrow{a}, y expr=\thisrow{v} / \thisrow{a}, col sep=comma] {a_lamp1.csv};
+  \addplot+[color=green] table[x expr=\thisrow{a}, y expr=\thisrow{v} / \thisrow{a}, col sep=comma] {a_lamp2.csv};
+  \addplot+[color=cyan] table[x expr=\thisrow{a}, y expr=\thisrow{v} / \thisrow{a}, col sep=comma] {a_lamp3.csv};
+}
 
-\subsection{}
+\subsection{Lineare regression an den Widerstands-Strom-Kennlinien}
+\datadiagram{
+  enlargelimits=0.2,
+  ylabel={Widerstand $R$ in Ohm},
+  xlabel={Spannung $U$ in milli Ampere},
+}{
+  \addplot+[color=red] table[x expr=\thisrow{a}, y expr=\thisrow{v} / \thisrow{a}, col sep=comma] {a_lamp1.csv};
+}
+
+
+\datadiagram{
+  enlargelimits=0.2,
+  ylabel={Widerstand $R$ in Ohm},
+  xlabel={Spannung $U$ in milli Ampere},
+}{
+  \addplot+[color=green] table[x expr=\thisrow{a}, y expr=\thisrow{v} / \thisrow{a}, col sep=comma] {a_lamp2.csv};
+}
+\datadiagram{
+  enlargelimits=0.2,
+  ylabel={Widerstand $R$ in Ohm},
+  xlabel={Spannung $U$ in milli Ampere},
+}{
+  \addplot+[color=cyan] table[x expr=\thisrow{a}, y expr=\thisrow{v} / \thisrow{a}, col sep=comma] {a_lamp3.csv};
+}
+
+
+
 
 \section{Fazit}
 \section{Reflektion}

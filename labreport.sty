@@ -100,20 +100,20 @@
     y data/.store in=\ydata,
     y error/.store in=\yerror,
 }
-\newcommand{\datadiagram}[2][]{
-    \pgfkeys{/datadiagram, #1}
 
-    \begin{center}
-        \begin{tikzpicture}
-            \begin{axis}[
+
+\newcommand{\datadiagram}[2]{
+  \begin{center}
+    \pgfplotsset{every axis legend/.append style={
+          at={(1,0)},
+          anchor=south east}}
+    \begin{tikzpicture}
+      \begin{axis}[
             axis lines = left,
-            enlargelimits=0.2,
-            ylabel={\ylabel},
-            xlabel={\xlabel},
-            cycle list name=black white
+            #1
             ]
-            \addplot+[only marks, error bars/.cd, y dir=both, y fixed=\yerror, x dir=both, x fixed=\xerror] table[x=\xdata, y=\ydata, col sep=comma] {#2};
-            \end{axis}
+            #2
+          \end{axis}
         \end{tikzpicture}
-    \end{center}
+      \end{center}
 }
