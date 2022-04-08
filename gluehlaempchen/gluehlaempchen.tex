@@ -32,13 +32,18 @@ Für herkömmliche Widerstände gilt:
   \frac{1}{R_{parallel}} & = \sum_{i} \frac{1}{R_i}
 \end{align*}
 \cite{FoTa, S.176}
-
+\\
+\\
+Glühlampen haben 2 wichtige Parameter was Stromkreise angeht:
+\begin{list}{-}{}
+  \item Den Kaltwiderstand, das ist der Widerstand $R_{kalt}$, der herrscht wenn kein Strom fliesst.
+  \item Der warmwiderstands Koeffizient $r$. Der Warmwiderstand $R_{warm}$ ist $r * I$.
+\end{list}
 \section{Experiment}
-Das Experiment bestand aus verschiedenen Stromkreisen, und Messungen an diesen Stromkreisen.
-\par
 Das folgende Experiment besteht aus verschiedenen Stromkreisen und deren Messungen. 
 Für den folgenden Stromkreis haben wir zehn Messungen für Lampe 1, fünf für Lampe 2 und weitere fünf für Lampe 3. Für alle zehn werden unterschiedliche Spannungen angelegt, wie in den folgenden Grafiken dargestellt. \\
-
+\\
+Falls nichts anderes steht sind alle Werte für $U$ in Volt, und alle Werte für $A$ in Ampere angegeben.
 \circuit{
   (0, 0) to[vsource] (0, 5) to[lamp] (8, 5) to[rmeterwa, t=A, l=$I_{gemessen}$] (8, 0) -- (0, 0)
   (2, 5) -- (2, 6) to[rmeterwa, t=V, l=$U_{gemessen}$] (6, 6) -- (6, 5)
@@ -52,14 +57,14 @@ Für den folgenden Stromkreis haben wir zehn Messungen für Lampe 1, fünf für 
 Für die nächsten beiden Stromkreise haben wir jeweils eine Messung, da wir uns im Folgenden nicht auf die spezifischen Werte, sondern auf die Position der Lampen konzentrieren:
 
 \circuit{
-  (0, 0) to[vsource] (0, 5) to[lamp, l=1] (4, 5) to[lamp, l=2] (8, 5) to[rmeterwa, t=A, l=$I_{gemessen}$] (8, 0) -- (0, 0)
+  (0, 0) to[vsource] (0, 5) to[lamp, l=1] (4, 5) to[lamp, l=2] (8, 5) to[rmeterwa, t=A, l=$I_{total}$] (8, 0) -- (0, 0)
   (1, 5) -- (1, 6) to[rmeterwa, t=V, l=$U_{gemessen}$] (7, 6) -- (7, 5)
 }
 
-\datatable{c|c|c|c|c}{\csvcoli & \csvcolii & \csvcoliii & \csvcoliv & \csvcolv}{In Serie geschaltet}{$U_{start}$ & $U_{gemessen}$ & $I_{total}$ & $I_{1}$ & $I_{2}$}{b_lamp1.csv}{serie}
+\datatable{c|c|c|c|c}{\csvcoli & \csvcolii & \csvcoliii & \csvcoliv & \csvcolv}{In Serie geschaltet}{$U_{start}$ & $U_{gemessen}$ & $I_{total}$ & $U_{1}$ & $U_{2}$}{b_lamp1.csv}{serie}
 
 \circuit{
-  (0, 0) to[vsource] (0, 5) to[lamp, l=2] (8, 5) to[rmeterwa, t=A, l=$I_{gemessen}$] (8, 0) -- (0, 0)
+  (0, 0) to[vsource] (0, 5) to[lamp, l=2] (8, 5) to[rmeterwa, t=A, l=$I_{total}$] (8, 0) -- (0, 0)
   (2, 5) -- (2, 6.5) to[lamp, l=1] (6, 6.5) -- (6, 5)
   (2, 5) -- (2, 3.5) to[rmeterwa, t=V, l=$U_{gemessen}$] (6, 3.5) -- (6, 5)
 }
@@ -78,7 +83,7 @@ Anschließend führen wir Messungen durch, um unsere Annahmen zu überprüfen.
 Vermutung: 1, 2 und 3 alle gleich hell \\
 Beobachtung: Unsere Vermutung war richtig
 
-\datatable{c|c|c|c|c|c}{\csvcoli & \csvcolii & \csvcoliii & \csvcoliv & \csvcolv & \csvcolvi}{F$i$}{$U_{start}$ & $U_{gemessen}$ & $I_{total}$ & $I_{1}$ & $I_{2}$ & $I_{3}$}{f_1.csv}{f1}
+\datatable{c|c|c|c|c|c}{\csvcoli & \csvcolii & \csvcoliii & \csvcoliv & \csvcolv & \csvcolvi}{F$i$}{$U_{start}$ & $U_{gemessen}$ & $I_{total}$ & $U_{1}$ & $U_{2}$ & $U_{3}$}{f_1.csv}{f1}
 
 \circuit{
   (0, 0) to[vsource] (0, 5)
@@ -87,7 +92,7 @@ Beobachtung: Unsere Vermutung war richtig
   (1, 5) -- (1, 6) to[lamp, l=2] (7, 6) -- (7, 5)
 }
 
-\datatable{c|c|c|c|c|c|c}{\csvcoli & \csvcolii & \csvcoliii & \csvcoliv & \csvcolv & \csvcolvi & \csvcolvii}{F$ii$}{$U_{start}$ & $U_{gemessen}$ & $I_{total}$ & $I_{1}$ & $I_{2}$ & $I_{3}$ & $I_{1 + 3}$}{f_2.csv}{f2}
+\datatable{c|c|c|c|c|c|c}{\csvcoli & \csvcolii & \csvcoliii & \csvcoliv & \csvcolv & \csvcolvi & \csvcolvii}{F$ii$}{$U_{start}$ & $U_{gemessen}$ & $I_{total}$ & $U_{1}$ & $U_{2}$ & $U_{3}$ & $U_{1 + 3}$}{f_2.csv}{f2}
 
 Vermutung: 1 und zwei sind gleich hell, 3 ist stärker wie 1 und 2\\
 Beobachtung: Unsere Vermutung war richtig
@@ -100,7 +105,7 @@ Beobachtung: Unsere Vermutung war richtig
   (8, 5) -- (8, 0) -- (0, 0)
 }
 
-\datatable{c|c|c|c|c|c|c}{\csvcoli & \csvcolii & \csvcoliii & \csvcoliv & \csvcolv & \csvcolvi & \csvcolvii}{F$iii$}{$U_{start}$ & $U_{gemessen}$ & $I_{total}$ & $I_{1}$ & $I_{2}$ & $I_{3}$ & $I_{2 + 3}$}{f_3.csv}{f3}
+\datatable{c|c|c|c|c|c|c}{\csvcoli & \csvcolii & \csvcoliii & \csvcoliv & \csvcolv & \csvcolvi & \csvcolvii}{F$iii$}{$U_{start}$ & $U_{gemessen}$ & $I_{total}$ & $U_{1}$ & $U_{2}$ & $U_{3}$ & $U_{2 + 3}$}{f_3.csv}{f3}
 
 Vermutung: 1 ist am stärksten, 2 und 3 sind gleichstark.\\
 Beobachtung: Unsere Vermutung war richtig
