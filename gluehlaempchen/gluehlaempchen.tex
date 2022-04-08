@@ -36,8 +36,8 @@ Für herkömmliche Widerstände gilt:
 \section{Experiment}
 Das Experiment bestand aus verschiedenen Stromkreisen, und Messungen an diesen Stromkreisen.
 \par
-Für dem folgenden Stromkreis haben wir zehn Messungen gemacht für das Lämpchen 1, 5 für Lämpchen 2, und weitere 5 für Lämpchen 3.
-Bei allen zehn haben wir verschiedene Spannungen angehängt.\\
+Das folgende Experiment besteht aus verschiedenen Stromkreisen und deren Messungen. 
+Für den folgenden Stromkreis haben wir zehn Messungen für Lampe 1, fünf für Lampe 2 und weitere fünf für Lampe 3. Für alle zehn werden unterschiedliche Spannungen angelegt, wie in den folgenden Grafiken dargestellt. \\
 
 \circuit{
   (0, 0) to[vsource] (0, 5) to[lamp] (8, 5) to[rmeterwa, t=A, l=$I_{gemessen}$] (8, 0) -- (0, 0)
@@ -49,14 +49,14 @@ Bei allen zehn haben wir verschiedene Spannungen angehängt.\\
 \datatable{c|c|c}{\csvcoli & \csvcolii & \csvcoliii}{Lämpchen 2}{$U_{start}$ & $U_{gemessen}$ & $I_{gemessen}$}{a_lamp2.csv}{a_lamp2}
 \datatable{c|c|c}{\csvcoli & \csvcolii & \csvcoliii}{Lämpchen 3}{$U_{start}$ & $U_{gemessen}$ & $I_{gemessen}$}{a_lamp2.csv}{a_lamp3}
 
-Für diese nächsten zwei Stromkreise haben wir je eine Messung gemacht:
+Für die nächsten beiden Stromkreise haben wir jeweils eine Messung, da wir uns im Folgenden nicht auf die spezifischen Werte, sondern auf die Position der Lampen konzentrieren:
 
 \circuit{
   (0, 0) to[vsource] (0, 5) to[lamp, l=1] (4, 5) to[lamp, l=2] (8, 5) to[rmeterwa, t=A, l=$I_{gemessen}$] (8, 0) -- (0, 0)
   (1, 5) -- (1, 6) to[rmeterwa, t=V, l=$U_{gemessen}$] (7, 6) -- (7, 5)
 }
 
-\datatable{c|c|c|c|c}{\csvcoli & \csvcolii & \csvcoliii & \csvcoliv & \csvcolv}{In serie geschaltet}{$U_{start}$ & $U_{gemessen}$ & $I_{total}$ & $I_{1}$ & $I_{2}$}{b_lamp1.csv}{serie}
+\datatable{c|c|c|c|c}{\csvcoli & \csvcolii & \csvcoliii & \csvcoliv & \csvcolv}{In Serie geschaltet}{$U_{start}$ & $U_{gemessen}$ & $I_{total}$ & $I_{1}$ & $I_{2}$}{b_lamp1.csv}{serie}
 
 \circuit{
   (0, 0) to[vsource] (0, 5) to[lamp, l=2] (8, 5) to[rmeterwa, t=A, l=$I_{gemessen}$] (8, 0) -- (0, 0)
@@ -66,8 +66,8 @@ Für diese nächsten zwei Stromkreise haben wir je eine Messung gemacht:
 
 \datatable{c|c|c|c|c}{\csvcoli & \csvcolii & \csvcoliii & \csvcoliv & \csvcolv}{Parallel geschaltet}{$U_{start}$ & $U_{gemessen}$ & $I_{total}$ & $I_{1}$ & $I_{2}$}{c_lamp1.csv}{parallel}
 
-Bei den kommenden Diagrammen haben wir Vermutungen gestellt in Bezug auf die Lichtintensität der verschiedenen Glühlämpchen, und haben diese nacher beobachtet.
-Ausserdem haben wir auch Messungen gemacht.
+Vor der Durchführung der Messungen haben wir die Intensität jeder Lampe unter Berücksichtigung ihrer Position geschätzt. Es ist erwähnenswert, dass die Helligkeit der Lampen von der durch sie fließenden Spannung abhängt. 
+Anschließend führen wir Messungen durch, um unsere Annahmen zu überprüfen.
 
 \circuit{
   (0, 0) to[vsource] (0, 5)
