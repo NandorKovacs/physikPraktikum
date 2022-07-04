@@ -1,0 +1,32 @@
+\documentclass[12pt, a4paper, twoside]{article}
+\usepackage{pdfpages}
+\usepackage{../labreport}
+
+\setlabreportopts[authors={Nandor Kovacs \& Céline Schuster},
+    title={Mathematisches Pendel},
+    subtitle={Untersuchung der Eigenschaften eines Mathematischen Pendels},
+    date={\today},
+    labdate={10. März 2022}
+]
+
+\begin{document}
+  \section{Versuch 2} 
+  \subsection{}
+  \datadiagram{  
+    enlargelimits=0.2,
+    ylabel={Event Anzahl},
+    xlabel={Bleiplattendicke in mm}
+  }
+  {
+    \addplot+[color=red] table[x expr=\thisrow{mm}, y expr=\thisrow{e} - 38, col sep=comma] {messungen.csv};
+    \addplot+[color=yellow, domain=0:21.5, mark=none]{347.5};
+  }
+
+  Bei 0mm beträgt die Anzahl von Events im Zeitrahmen 695.
+  Die Hälfte davon ist 347.5. Die gelbe Linie zeichnet diesen Wert ein.
+  Nach unseren Daten ist der Halbwertswert etwa bei 12.5mm. 
+
+  \subsection{}
+  
+  \section{Versuch 3}
+\end{document}    
